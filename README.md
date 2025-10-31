@@ -14,12 +14,35 @@ Hamnen (Swedish for "the harbor") is a web-based UI that allows you to launch Do
 ## Prerequisites
 
 - Docker and Docker Compose installed
-- Node.js 16+ (for running the backend and frontend)
 - Linux/macOS (or WSL2 on Windows)
+- Node.js 16+ (only if running without Docker)
 
 ## Quick Start
 
-### 1. Install Dependencies
+### Option 1: Run with Docker Compose (Recommended)
+
+The easiest way to run Hamnen is with Docker Compose:
+
+```bash
+# Build and start all services
+docker-compose up --build
+
+# Or run in detached mode
+docker-compose up -d --build
+```
+
+That's it! Open your browser to `http://localhost:3000`
+
+To stop:
+```bash
+docker-compose down
+```
+
+### Option 2: Run Locally with Node.js
+
+If you prefer to run without Docker:
+
+#### 1. Install Dependencies
 
 ```bash
 # Install backend dependencies
@@ -31,7 +54,7 @@ cd ../frontend
 npm install
 ```
 
-### 2. Start the Backend
+#### 2. Start the Backend
 
 ```bash
 cd backend
@@ -40,7 +63,7 @@ npm start
 
 The backend server will start on `http://localhost:3001`
 
-### 3. Start the Frontend
+#### 3. Start the Frontend
 
 In a new terminal:
 
@@ -51,7 +74,7 @@ npm start
 
 The frontend will start on `http://localhost:3000` and automatically open in your browser.
 
-### 4. Launch Applications
+### Using Hamnen
 
 - Browse the available applications on the main page
 - Click "Launch" on any card to start the application
@@ -194,14 +217,30 @@ Tiny Go webserver that displays OS and HTTP request information.
 
 ## Configuration
 
-### Backend Port
+### Running with Docker Compose
+
+The docker-compose setup includes:
+- **Frontend**: Runs on port 3000 (Nginx serving React build)
+- **Backend**: Runs on port 3001 (Node.js/Express)
+- **Network**: Both services on `hamnen_network`
+- **Volumes**: Docker socket and apps directory mounted
+
+To customize ports, edit `docker-compose.yml`:
+```yaml
+ports:
+  - "8080:80"  # Change frontend port to 8080
+```
+
+### Running Locally
+
+#### Backend Port
 The backend runs on port 3001 by default. To change this:
 
 ```bash
 PORT=3002 npm start
 ```
 
-### Frontend Proxy
+#### Frontend Proxy
 The frontend proxies API requests to `http://localhost:3001` by default. This is configured in `frontend/package.json`:
 
 ```json
@@ -250,7 +289,19 @@ If an application fails to start due to port conflicts:
 
 ## Development
 
-### Running in Development Mode
+### Running in Development Mode with Docker
+
+For development with volume mounts (code changes reflected immediately):
+
+```bash
+# Stop production containers first
+docker-compose down
+
+# Use development compose file (if created)
+# Or run locally as described below
+```
+
+### Running in Development Mode Locally
 
 Backend with auto-reload:
 ```bash
@@ -266,6 +317,13 @@ npm start
 
 ### Building for Production
 
+Docker Compose:
+```bash
+docker-compose build
+docker-compose up -d
+```
+
+Manual build:
 ```bash
 cd frontend
 npm run build

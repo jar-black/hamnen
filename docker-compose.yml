@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hamnen_backend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      # Mount Docker socket to allow container management
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Mount apps directory
+      - ./apps:/app/apps:ro
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+    networks:
+      - hamnen-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hamnen_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - hamnen-network
+
+networks:
+  hamnen-network:
+    name: hamnen_network
+    driver: bridge
