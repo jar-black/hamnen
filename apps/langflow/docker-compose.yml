@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  langflow:
+    image: langflowai/langflow:latest
+    container_name: hamnen_langflow
+    restart: unless-stopped
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./volumes/langflow_data:/app/langflow
+    environment:
+      - LANGFLOW_DATABASE_URL=sqlite:///app/langflow/langflow.db
+      - LANGFLOW_AUTO_LOGIN=false
+    command: run --host 0.0.0.0 --port 7860
