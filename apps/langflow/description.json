@@ -1,0 +1,9 @@
+{
+  "name": "Langflow",
+  "description": "Visual flow-based programming tool for building AI and LLM applications",
+  "icon": "🤖",
+  "port": 7860,
+  "path": "/",
+  "healthCheck": "http://localhost:7860/health",
+  "tags": ["ai", "llm", "workflow", "visual-programming"]
+}
