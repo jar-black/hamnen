@@ -1,0 +1,22 @@
+{
+  "name": "hamnen",
+  "version": "1.0.0",
+  "description": "Docker Application Launcher - One-click deployment platform",
+  "scripts": {
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "docker",
+    "docker-compose",
+    "launcher",
+    "ui",
+    "containers"
+  ],
+  "author": "",
+  "license": "MIT"
+}
