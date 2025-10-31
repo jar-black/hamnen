@@ -4,7 +4,10 @@ const yaml = require('js-yaml');
 
 class AppLoader {
   constructor() {
-    this.appsDir = path.join(__dirname, '../../apps');
+    // Support both local development and Docker deployment
+    // In Docker: /app/apps (set via APPS_DIR env var)
+    // Locally: ../../apps (relative to this file)
+    this.appsDir = process.env.APPS_DIR || path.join(__dirname, '../../apps');
   }
 
   /**
