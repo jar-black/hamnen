@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  whoami:
+    image: traefik/whoami:latest
+    container_name: hamnen_whoami
+    restart: unless-stopped
+    ports:
+      - "8081:80"

@@ -1,0 +1,9 @@
+{
+  "name": "Nginx Demo",
+  "description": "Simple Nginx web server serving a static welcome page",
+  "icon": "🌐",
+  "port": 8080,
+  "path": "/",
+  "healthCheck": "http://localhost:8080",
+  "tags": ["web", "demo", "nginx"]
+}

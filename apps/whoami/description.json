@@ -1,0 +1,9 @@
+{
+  "name": "WhoAmI",
+  "description": "Tiny Go webserver that prints OS information and HTTP request details",
+  "icon": "🔍",
+  "port": 8081,
+  "path": "/",
+  "healthCheck": "http://localhost:8081",
+  "tags": ["debug", "tool", "info"]
+}

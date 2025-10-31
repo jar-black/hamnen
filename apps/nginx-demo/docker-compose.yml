@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: hamnen_nginx_demo
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./volumes/html:/usr/share/nginx/html:ro
