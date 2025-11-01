@@ -1,0 +1,9 @@
+{
+  "name": "Homepage",
+  "description": "Modern, fully customizable application dashboard with integrations",
+  "icon": "🏠",
+  "port": 3003,
+  "path": "/",
+  "healthCheck": "http://localhost:3003",
+  "tags": ["dashboard", "homepage", "launcher"]
+}

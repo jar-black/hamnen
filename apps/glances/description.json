@@ -1,0 +1,9 @@
+{
+  "name": "Glances",
+  "description": "Cross-platform system monitoring tool written in Python",
+  "icon": "👀",
+  "port": 61208,
+  "path": "/",
+  "healthCheck": "http://localhost:61208",
+  "tags": ["monitoring", "system", "performance"]
+}

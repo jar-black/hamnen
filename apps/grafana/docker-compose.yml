@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: hamnen_grafana
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./volumes/data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=hamnen
+      - GF_INSTALL_PLUGINS=
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

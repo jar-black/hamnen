@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: hamnen_pihole
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8104:80"
+    volumes:
+      - ./volumes/etc-pihole:/etc/pihole
+      - ./volumes/etc-dnsmasq.d:/etc/dnsmasq.d
+    environment:
+      - TZ=UTC
+      - WEBPASSWORD=hamnen
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

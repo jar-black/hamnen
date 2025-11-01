@@ -1,0 +1,9 @@
+{
+  "name": "LibreSpeed",
+  "description": "Self-hosted HTML5 speed test, no Flash, No Java, No Websocket",
+  "icon": "⚡",
+  "port": 8111,
+  "path": "/",
+  "healthCheck": "http://localhost:8111",
+  "tags": ["speedtest", "network", "benchmark"]
+}

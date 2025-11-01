@@ -1,0 +1,9 @@
+{
+  "name": "Prometheus",
+  "description": "Open-source systems monitoring and alerting toolkit",
+  "icon": "🔥",
+  "port": 9090,
+  "path": "/",
+  "healthCheck": "http://localhost:9090",
+  "tags": ["monitoring", "metrics", "alerting", "time-series"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Statping",
+  "description": "Status page for monitoring your websites and applications",
+  "icon": "📊",
+  "port": 8112,
+  "path": "/",
+  "healthCheck": "http://localhost:8112",
+  "tags": ["monitoring", "status-page", "uptime"]
+}

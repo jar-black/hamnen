@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: hamnen_vaultwarden
+    restart: unless-stopped
+    ports:
+      - "8105:80"
+    volumes:
+      - ./volumes/data:/data
+    environment:
+      - WEBSOCKET_ENABLED=true
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

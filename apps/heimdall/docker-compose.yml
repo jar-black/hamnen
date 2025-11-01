@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: hamnen_heimdall
+    restart: unless-stopped
+    ports:
+      - "8113:80"
+    volumes:
+      - ./volumes/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

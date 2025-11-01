@@ -1,0 +1,9 @@
+{
+  "name": "WireGuard",
+  "description": "Fast, modern, secure VPN tunnel",
+  "icon": "🔒",
+  "port": 51820,
+  "path": "/",
+  "healthCheck": "http://localhost:51820",
+  "tags": ["vpn", "security", "network", "tunnel"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Scrutiny",
+  "description": "Hard drive S.M.A.R.T monitoring, historical trends and real-time alerting",
+  "icon": "💾",
+  "port": 8109,
+  "path": "/",
+  "healthCheck": "http://localhost:8109",
+  "tags": ["monitoring", "smart", "disk", "health"]
+}

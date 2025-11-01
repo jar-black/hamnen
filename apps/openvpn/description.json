@@ -1,0 +1,9 @@
+{
+  "name": "OpenVPN",
+  "description": "Full-featured open source SSL VPN solution",
+  "icon": "🔐",
+  "port": 1194,
+  "path": "/",
+  "healthCheck": "http://localhost:1194",
+  "tags": ["vpn", "security", "network"]
+}

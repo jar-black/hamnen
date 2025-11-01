@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: hamnen_prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./volumes/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./volumes/data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

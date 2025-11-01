@@ -1,0 +1,9 @@
+{
+  "name": "Tailscale",
+  "description": "Zero config VPN for building secure networks",
+  "icon": "🦎",
+  "port": 41641,
+  "path": "/",
+  "healthCheck": "http://localhost:41641",
+  "tags": ["vpn", "mesh-network", "security", "wireguard"]
+}

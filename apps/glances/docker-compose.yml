@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  glances:
+    image: nicolargo/glances:latest
+    container_name: hamnen_glances
+    restart: unless-stopped
+    pid: host
+    ports:
+      - "61208:61208"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - GLANCES_OPT=-w
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

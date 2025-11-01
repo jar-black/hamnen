@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: hamnen_adguardhome
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "54:53/tcp"
+      - "54:53/udp"
+    volumes:
+      - ./volumes/work:/opt/adguardhome/work
+      - ./volumes/conf:/opt/adguardhome/conf
+
+networks:
+  default:
+    name: hamnen-network
+    external: true
