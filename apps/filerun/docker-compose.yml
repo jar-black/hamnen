@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  filerun:
+    image: filerun/filerun:latest
+    container_name: hamnen_filerun
+    restart: unless-stopped
+    ports:
+      - "8116:80"
+    volumes:
+      - ./volumes/html:/var/www/html
+      - ./volumes/user-files:/user-files
+    environment:
+      - FR_DB_HOST=filerun_db
+      - FR_DB_NAME=filerun
+      - FR_DB_USER=filerun
+      - FR_DB_PASS=filerun
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: hamnen_filerun_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=filerun_root
+      - MYSQL_DATABASE=filerun
+      - MYSQL_USER=filerun
+      - MYSQL_PASSWORD=filerun
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

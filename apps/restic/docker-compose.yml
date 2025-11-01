@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  restic:
+    image: restic/restic:latest
+    container_name: hamnen_restic
+    restart: unless-stopped
+    volumes:
+      - ./volumes/data:/data
+      - ./volumes/backups:/backups
+      - ./volumes/config:/config
+    environment:
+      - RESTIC_REPOSITORY=/backups
+      - RESTIC_PASSWORD=hamnen_password
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

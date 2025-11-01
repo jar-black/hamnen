@@ -1,0 +1,9 @@
+{
+  "name": "Syncthing",
+  "description": "Continuous file synchronization program",
+  "icon": "🔄",
+  "port": 8384,
+  "path": "/",
+  "healthCheck": "http://localhost:8384",
+  "tags": ["sync", "files", "p2p", "backup"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Outline",
+  "description": "Fast, collaborative knowledge base for growing teams",
+  "icon": "📝",
+  "port": 3007,
+  "path": "/",
+  "healthCheck": "http://localhost:3007",
+  "tags": ["wiki", "knowledge-base", "collaboration", "productivity"]
+}

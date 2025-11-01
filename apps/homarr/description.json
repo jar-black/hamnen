@@ -1,0 +1,9 @@
+{
+  "name": "Homarr",
+  "description": "Customizable browser's home page to interact with your homeserver's services",
+  "icon": "🏡",
+  "port": 7575,
+  "path": "/",
+  "healthCheck": "http://localhost:7575",
+  "tags": ["dashboard", "homepage", "homelab"]
+}

@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  dashy:
+    image: lissy93/dashy:latest
+    container_name: hamnen_dashy
+    restart: unless-stopped
+    ports:
+      - "4000:80"
+    volumes:
+      - ./volumes/conf.yml:/app/public/conf.yml
+    environment:
+      - NODE_ENV=production
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

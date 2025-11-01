@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack:latest
+    container_name: hamnen_bookstack
+    restart: unless-stopped
+    ports:
+      - "8124:80"
+    volumes:
+      - ./volumes/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=http://localhost:8124
+      - DB_HOST=bookstack_db
+      - DB_USER=bookstack
+      - DB_PASS=bookstack
+      - DB_DATABASE=bookstack
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: hamnen_bookstack_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=bookstack_root
+      - MYSQL_DATABASE=bookstack
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=bookstack
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

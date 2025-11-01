@@ -1,0 +1,9 @@
+{
+  "name": "JupyterLab",
+  "description": "Web-based interactive development environment for notebooks, code, and data",
+  "icon": "📓",
+  "port": 8888,
+  "path": "/",
+  "healthCheck": "http://localhost:8888",
+  "tags": ["notebook", "python", "data-science", "development"]
+}

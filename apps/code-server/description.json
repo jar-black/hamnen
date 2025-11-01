@@ -1,0 +1,9 @@
+{
+  "name": "Code Server",
+  "description": "VS Code in the browser - run Visual Studio Code on any machine",
+  "icon": "💻",
+  "port": 8123,
+  "path": "/",
+  "healthCheck": "http://localhost:8123",
+  "tags": ["vscode", "ide", "editor", "development"]
+}

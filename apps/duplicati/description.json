@@ -1,0 +1,9 @@
+{
+  "name": "Duplicati",
+  "description": "Free backup software to store encrypted backups online",
+  "icon": "💾",
+  "port": 8200,
+  "path": "/",
+  "healthCheck": "http://localhost:8200",
+  "tags": ["backup", "encryption", "cloud"]
+}

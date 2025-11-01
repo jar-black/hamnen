@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  outline:
+    image: outlinewiki/outline:latest
+    container_name: hamnen_outline
+    restart: unless-stopped
+    ports:
+      - "3007:3000"
+    volumes:
+      - ./volumes/data:/var/lib/outline/data
+    environment:
+      - SECRET_KEY=hamnen_secret_key_change_me
+      - UTILS_SECRET=hamnen_utils_secret_change_me
+      - DATABASE_URL=postgres://outline:outline@outline_db:5432/outline
+      - REDIS_URL=redis://outline_redis:6379
+      - URL=http://localhost:3007
+      - PORT=3000
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: hamnen_outline_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=outline
+      - POSTGRES_PASSWORD=outline
+      - POSTGRES_DB=outline
+
+  redis:
+    image: redis:alpine
+    container_name: hamnen_outline_redis
+    restart: unless-stopped
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

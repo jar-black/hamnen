@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: hamnen_gitlab
+    restart: unless-stopped
+    ports:
+      - "8120:80"
+      - "8443:443"
+      - "2222:22"
+    volumes:
+      - ./volumes/config:/etc/gitlab
+      - ./volumes/logs:/var/log/gitlab
+      - ./volumes/data:/var/opt/gitlab
+    environment:
+      - GITLAB_OMNIBUS_CONFIG="external_url 'http://localhost:8120'"
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

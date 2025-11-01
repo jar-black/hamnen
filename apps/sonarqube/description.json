@@ -1,0 +1,9 @@
+{
+  "name": "SonarQube",
+  "description": "Continuous code quality and security inspection platform",
+  "icon": "🔍",
+  "port": 9002,
+  "path": "/",
+  "healthCheck": "http://localhost:9002",
+  "tags": ["code-quality", "security", "analysis", "development"]
+}
