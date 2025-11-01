@@ -40,9 +40,34 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.apps-grid {
+.apps-container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.category-section {
+  margin-bottom: 3rem;
+}
+
+.category-header {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-count {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.apps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
@@ -66,7 +91,6 @@
 }
 
 .no-apps {
-  grid-column: 1 / -1;
   text-align: center;
   color: white;
   font-size: 1.2rem;

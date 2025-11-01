@@ -76,6 +76,27 @@ function App() {
     (app.tags && app.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())))
   );
 
+  // Group apps by category
+  const appsByCategory = filteredApps.reduce((acc, app) => {
+    const category = app.category || 'uncategorized';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(app);
+    return acc;
+  }, {});
+
+  // Sort categories alphabetically
+  const sortedCategories = Object.keys(appsByCategory).sort();
+
+  // Format category name for display
+  const formatCategoryName = (category) => {
+    return category
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   if (loading && apps.length === 0) {
     return (
       <div className="App">
@@ -107,20 +128,30 @@ function App() {
         </div>
       )}
 
-      <div className="apps-grid">
+      <div className="apps-container">
         {filteredApps.length === 0 ? (
           <div className="no-apps">
             <p>No applications found.</p>
             <p>Add applications to the <code>apps/</code> directory.</p>
           </div>
         ) : (
-          filteredApps.map(app => (
-            <AppCard
-              key={app.id}
-              app={app}
-              onStart={handleStart}
-              onStop={handleStop}
-            />
+          sortedCategories.map(category => (
+            <div key={category} className="category-section">
+              <h2 className="category-header">
+                {formatCategoryName(category)}
+                <span className="category-count">({appsByCategory[category].length})</span>
+              </h2>
+              <div className="apps-grid">
+                {appsByCategory[category].map(app => (
+                  <AppCard
+                    key={app.id}
+                    app={app}
+                    onStart={handleStart}
+                    onStop={handleStop}
+                  />
+                ))}
+              </div>
+            </div>
           ))
         )}
       </div>
