@@ -14,6 +14,21 @@ function App() {
   const [filter, setFilter] = useState('');
   const [showRunningOnly, setShowRunningOnly] = useState(false);
   const [toasts, setToasts] = useState([]);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Initialize from localStorage or default to false
+    const saved = localStorage.getItem('darkMode');
+    return saved === 'true';
+  });
+
+  // Apply dark mode class to body
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   useEffect(() => {
     loadApps();
@@ -158,6 +173,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <button
+          className="dark-mode-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+          title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
         <h1>🚢 Hamnen</h1>
         <p>Docker Application Launcher</p>
       </header>
