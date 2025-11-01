@@ -88,11 +88,12 @@ class APITester {
     try {
       const response = await this.request('GET', '/api/apps');
       this.assert(response.status === 200, 'List apps endpoint returns 200');
-      this.assert(Array.isArray(response.body), 'Response is an array');
-      this.assert(response.body.length > 0, 'At least one application is loaded');
+      this.assert(response.body.apps !== undefined, 'Response has apps property');
+      this.assert(Array.isArray(response.body.apps), 'Response apps is an array');
+      this.assert(response.body.apps.length > 0, 'At least one application is loaded');
 
-      if (response.body.length > 0) {
-        const app = response.body[0];
+      if (response.body.apps.length > 0) {
+        const app = response.body.apps[0];
         this.assert(app.id !== undefined, 'App has id field');
         this.assert(app.name !== undefined, 'App has name field');
         this.assert(app.category !== undefined, 'App has category field');
