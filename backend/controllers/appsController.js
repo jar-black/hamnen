@@ -31,14 +31,15 @@ async function listApps(req, res) {
  */
 async function getApp(req, res) {
   try {
-    const { name } = req.params;
-    const app = await appLoader.loadApp(name);
+    // Support both "name" and "category/name" format
+    const appId = req.params[0] || req.params.name;
+    const app = await appLoader.findAppById(appId);
 
     if (!app) {
       return res.status(404).json({ error: 'Application not found' });
     }
 
-    const status = await dockerManager.getAppStatus(name);
+    const status = await dockerManager.getAppStatus(appId);
     res.json({ ...app, ...status });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -50,23 +51,24 @@ async function getApp(req, res) {
  */
 async function startApp(req, res) {
   try {
-    const { name } = req.params;
+    // Support both "name" and "category/name" format
+    const appId = req.params[0] || req.params.name;
 
     // Check if app exists
-    const app = await appLoader.loadApp(name);
+    const app = await appLoader.findAppById(appId);
     if (!app) {
       return res.status(404).json({ error: 'Application not found' });
     }
 
     // Start the application
-    await dockerManager.startApp(name);
+    await dockerManager.startApp(appId);
 
     // Wait a moment and get status
     await new Promise(resolve => setTimeout(resolve, 2000));
-    const status = await dockerManager.getAppStatus(name);
+    const status = await dockerManager.getAppStatus(appId);
 
     res.json({
-      message: `Application ${name} started`,
+      message: `Application ${app.name || appId} started`,
       status,
       url: `http://localhost:${app.port}${app.path || '/'}`
     });
@@ -80,12 +82,13 @@ async function startApp(req, res) {
  */
 async function stopApp(req, res) {
   try {
-    const { name } = req.params;
+    // Support both "name" and "category/name" format
+    const appId = req.params[0] || req.params.name;
 
-    await dockerManager.stopApp(name);
+    await dockerManager.stopApp(appId);
 
     res.json({
-      message: `Application ${name} stopped`,
+      message: `Application ${appId} stopped`,
       status: 'stopped'
     });
   } catch (error) {
@@ -98,10 +101,11 @@ async function stopApp(req, res) {
  */
 async function getAppLogs(req, res) {
   try {
-    const { name } = req.params;
+    // Support both "name" and "category/name" format
+    const appId = req.params[0] || req.params.name;
     const lines = req.query.lines || 100;
 
-    const logs = await dockerManager.getAppLogs(name, lines);
+    const logs = await dockerManager.getAppLogs(appId, lines);
 
     res.json({ logs });
   } catch (error) {
