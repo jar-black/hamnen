@@ -1,0 +1,9 @@
+{
+  "name": "Nexus Repository",
+  "description": "Universal artifact repository manager for Docker, npm, Maven, PyPI and more",
+  "icon": "📚",
+  "port": 8081,
+  "path": "/",
+  "healthCheck": "http://localhost:8081",
+  "tags": ["artifact-repository", "ci-cd", "package-manager"]
+}

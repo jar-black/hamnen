@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  registry:
+    image: registry:2
+    container_name: hamnen_docker_registry
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./volumes/data:/var/lib/registry
+    environment:
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
+    networks:
+      - registry_network
+
+  registry-ui:
+    image: joxit/docker-registry-ui:latest
+    container_name: hamnen_docker_registry_ui
+    restart: unless-stopped
+    ports:
+      - "5001:80"
+    environment:
+      - REGISTRY_TITLE=Hamnen Docker Registry
+      - REGISTRY_URL=http://registry:5000
+      - DELETE_IMAGES=true
+      - SHOW_CONTENT_DIGEST=true
+      - SINGLE_REGISTRY=true
+    networks:
+      - registry_network
+    depends_on:
+      - registry
+
+networks:
+  registry_network:
+    name: hamnen_docker_registry_network

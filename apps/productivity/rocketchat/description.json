@@ -1,0 +1,9 @@
+{
+  "name": "Rocket.Chat",
+  "description": "Open-source team communication platform with rich integrations",
+  "icon": "🚀",
+  "port": 3000,
+  "path": "/",
+  "healthCheck": "http://localhost:3000/api/info",
+  "tags": ["chat", "collaboration", "ci-cd", "notifications"]
+}

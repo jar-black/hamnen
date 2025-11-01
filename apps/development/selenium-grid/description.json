@@ -1,0 +1,9 @@
+{
+  "name": "Selenium Grid",
+  "description": "Distributed browser testing infrastructure for automated testing",
+  "icon": "🧪",
+  "port": 4444,
+  "path": "/",
+  "healthCheck": "http://localhost:4444/wd/hub/status",
+  "tags": ["testing", "selenium", "ci-cd", "automation"]
+}

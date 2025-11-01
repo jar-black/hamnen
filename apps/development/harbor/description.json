@@ -1,0 +1,9 @@
+{
+  "name": "Harbor",
+  "description": "Enterprise container registry with security scanning, signing, and replication",
+  "icon": "🏗️",
+  "port": 8090,
+  "path": "/",
+  "healthCheck": "http://localhost:8090",
+  "tags": ["container-registry", "docker", "security", "ci-cd"]
+}

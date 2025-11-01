@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: hamnen_selenium_hub
+    restart: unless-stopped
+    ports:
+      - "4444:4444"
+      - "4442:4442"
+      - "4443:4443"
+    networks:
+      - selenium_network
+
+  chrome:
+    image: selenium/node-chrome:latest
+    container_name: hamnen_selenium_chrome
+    restart: unless-stopped
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=5
+    networks:
+      - selenium_network
+
+  firefox:
+    image: selenium/node-firefox:latest
+    container_name: hamnen_selenium_firefox
+    restart: unless-stopped
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=5
+    networks:
+      - selenium_network
+
+  edge:
+    image: selenium/node-edge:latest
+    container_name: hamnen_selenium_edge
+    restart: unless-stopped
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=5
+    networks:
+      - selenium_network
+
+networks:
+  selenium_network:
+    name: hamnen_selenium_network
