@@ -1,0 +1,9 @@
+{
+  "name": "MongoDB",
+  "description": "Source-available cross-platform document-oriented NoSQL database",
+  "icon": "🍃",
+  "port": 27017,
+  "path": "/",
+  "healthCheck": "http://localhost:27017",
+  "tags": ["database", "nosql", "document-db", "mongodb"]
+}

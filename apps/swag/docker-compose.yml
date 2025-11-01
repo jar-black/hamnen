@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: hamnen_swag
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - URL=example.com
+      - VALIDATION=http
+    ports:
+      - "8092:80"
+      - "8093:443"
+    volumes:
+      - ./volumes/config:/config
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

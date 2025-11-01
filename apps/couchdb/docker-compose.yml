@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  couchdb:
+    image: couchdb:latest
+    container_name: hamnen_couchdb
+    restart: unless-stopped
+    ports:
+      - "5984:5984"
+    volumes:
+      - ./volumes/data:/opt/couchdb/data
+    environment:
+      - COUCHDB_USER=hamnen
+      - COUCHDB_PASSWORD=hamnen_password
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

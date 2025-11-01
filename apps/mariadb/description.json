@@ -1,0 +1,9 @@
+{
+  "name": "MariaDB",
+  "description": "Community-developed, commercially supported fork of MySQL",
+  "icon": "🦭",
+  "port": 3307,
+  "path": "/",
+  "healthCheck": "http://localhost:3307",
+  "tags": ["database", "sql", "relational", "mysql-fork"]
+}

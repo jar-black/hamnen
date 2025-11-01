@@ -1,0 +1,9 @@
+{
+  "name": "Swag",
+  "description": "Nginx webserver with PHP support, reverse proxy and Let's Encrypt SSL",
+  "icon": "🔐",
+  "port": 8092,
+  "path": "/",
+  "healthCheck": "http://localhost:8092",
+  "tags": ["nginx", "ssl", "reverse-proxy", "letsencrypt"]
+}

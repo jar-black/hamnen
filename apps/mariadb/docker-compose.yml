@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: hamnen_mariadb
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./volumes/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=hamnen_root_password
+      - MYSQL_DATABASE=hamnen_db
+      - MYSQL_USER=hamnen
+      - MYSQL_PASSWORD=hamnen_password
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

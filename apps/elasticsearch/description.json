@@ -1,0 +1,9 @@
+{
+  "name": "Elasticsearch",
+  "description": "Distributed, RESTful search and analytics engine",
+  "icon": "🔍",
+  "port": 9200,
+  "path": "/",
+  "healthCheck": "http://localhost:9200",
+  "tags": ["database", "search", "analytics", "elk"]
+}

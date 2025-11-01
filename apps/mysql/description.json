@@ -1,0 +1,9 @@
+{
+  "name": "MySQL",
+  "description": "World's most popular open source relational database",
+  "icon": "🐬",
+  "port": 3306,
+  "path": "/",
+  "healthCheck": "http://localhost:3306",
+  "tags": ["database", "sql", "relational", "mysql"]
+}
