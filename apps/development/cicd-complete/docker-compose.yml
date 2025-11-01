@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=cicd_user
       - POSTGRES_PASSWORD=cicd_password
       - POSTGRES_DB=gitlab
-      - POSTGRES_MULTIPLE_DATABASES=sonarqube
+      - POSTGRES_MULTIPLE_DATABASES=sonarqube,harbor
     volumes:
       - ./volumes/postgresql:/var/lib/postgresql/data
     networks:
@@ -125,6 +125,19 @@ services:
     environment:
       - CORE_SECRET=cicd_harbor_secret
       - JOBSERVICE_SECRET=cicd_jobservice_secret
+      - REGISTRY_URL=http://harbor-registry:5000
+      - TOKEN_SERVICE_URL=http://harbor-core:8080/service/token
+      - HARBOR_ADMIN_PASSWORD=Harbor12345
+      - DATABASE_TYPE=postgresql
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT=5432
+      - POSTGRESQL_USERNAME=cicd_user
+      - POSTGRESQL_PASSWORD=cicd_password
+      - POSTGRESQL_DATABASE=harbor
+      - REDIS_URL=redis:6379
+      - CACHE_TYPE=redis
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     volumes:
       - ./volumes/harbor/core:/data
     networks:
@@ -169,6 +182,7 @@ services:
     image: sonatype/nexus3:latest
     container_name: hamnen_cicd_nexus
     restart: unless-stopped
+    user: "200:200"
     ports:
       - "8184:8081"
       - "8185:8082"
