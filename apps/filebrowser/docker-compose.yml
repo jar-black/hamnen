@@ -8,12 +8,13 @@ services:
     ports:
       - "8117:80"
     volumes:
-      - ./volumes/files:/srv
-      - ./volumes/database:/database
-      - ./volumes/config:/config
-    environment:
-      - PUID=1000
-      - PGID=1000
+      - filebrowser_files:/srv
+      - filebrowser_db:/database
+    command: --port 80 --root /srv --database /database/filebrowser.db
+
+volumes:
+  filebrowser_files:
+  filebrowser_db:
 
 networks:
   default:

@@ -7,7 +7,7 @@
 set -e
 
 APPS_DIR="apps"
-LOG_DIR="test-logs"
+LOG_DIR="$(pwd)/test-logs"
 NETWORK_NAME="hamnen-network"
 
 # Colors for output

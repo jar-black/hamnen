@@ -5,14 +5,18 @@ services:
     image: grafana/grafana:latest
     container_name: hamnen_grafana
     restart: unless-stopped
+    user: "472"
     ports:
-      - "3001:3000"
+      - "3050:3000"
     volumes:
-      - ./volumes/data:/var/lib/grafana
+      - grafana_data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=hamnen
       - GF_INSTALL_PLUGINS=
+
+volumes:
+  grafana_data:
 
 networks:
   default:

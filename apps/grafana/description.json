@@ -2,8 +2,8 @@
   "name": "Grafana",
   "description": "Open source analytics and interactive visualization web application",
   "icon": "📈",
-  "port": 3001,
+  "port": 3050,
   "path": "/",
-  "healthCheck": "http://localhost:3001",
+  "healthCheck": "http://localhost:3050",
   "tags": ["monitoring", "visualization", "analytics", "metrics"]
 }

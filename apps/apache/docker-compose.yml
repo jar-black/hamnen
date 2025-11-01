@@ -9,7 +9,9 @@ services:
       - "8091:80"
     volumes:
       - ./volumes/htdocs:/usr/local/apache2/htdocs
-      - ./volumes/config:/usr/local/apache2/conf
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
 
 networks:
   default:
