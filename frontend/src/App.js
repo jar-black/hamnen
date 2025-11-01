@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import './App.css';
 import AppCard from './components/AppCard';
 import ToastContainer from './components/ToastContainer';
+import ConfirmDialog from './components/ConfirmDialog';
 
 // Connect to WebSocket server
 const socket = io(process.env.REACT_APP_API_URL || 'http://localhost:3001');
@@ -18,6 +19,11 @@ function App() {
     // Initialize from localStorage or default to false
     const saved = localStorage.getItem('darkMode');
     return saved === 'true';
+  });
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    appId: null,
+    appName: null
   });
 
   // Apply dark mode class to body
@@ -108,10 +114,21 @@ function App() {
     }
   };
 
-  const handleStop = async (appId) => {
+  const handleStopRequest = (appId) => {
+    const app = apps.find(a => a.id === appId);
+    setConfirmDialog({
+      isOpen: true,
+      appId,
+      appName: app?.name || appId
+    });
+  };
+
+  const handleStopConfirm = async () => {
+    const { appId, appName } = confirmDialog;
+    setConfirmDialog({ isOpen: false, appId: null, appName: null });
+
     try {
-      const app = apps.find(a => a.id === appId);
-      showToast(`Stopping ${app?.name || appId}...`, 'info');
+      showToast(`Stopping ${appName}...`, 'info');
 
       const response = await fetch(`/api/apps/${appId}/stop`, {
         method: 'POST'
@@ -122,11 +139,15 @@ function App() {
       // Update app status immediately
       await loadApps();
 
-      showToast(`${app?.name || appId} stopped successfully!`, 'success');
+      showToast(`${appName} stopped successfully!`, 'success');
     } catch (err) {
       showToast(err.message, 'error');
       throw err;
     }
+  };
+
+  const handleStopCancel = () => {
+    setConfirmDialog({ isOpen: false, appId: null, appName: null });
   };
 
   const filteredApps = apps.filter(app => {
@@ -227,7 +248,7 @@ function App() {
                     key={app.id}
                     app={app}
                     onStart={handleStart}
-                    onStop={handleStop}
+                    onStop={handleStopRequest}
                   />
                 ))}
               </div>
@@ -238,6 +259,15 @@ function App() {
 
       {/* Toast notifications */}
       <ToastContainer toasts={toasts} removeToast={removeToast} />
+
+      {/* Confirmation dialog */}
+      <ConfirmDialog
+        isOpen={confirmDialog.isOpen}
+        title="Stop Application"
+        message={`Are you sure you want to stop ${confirmDialog.appName}? This will shut down all running containers for this application.`}
+        onConfirm={handleStopConfirm}
+        onCancel={handleStopCancel}
+      />
     </div>
   );
 }
