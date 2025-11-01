@@ -1,0 +1,9 @@
+{
+  "name": "Dockge",
+  "description": "Fancy, easy-to-use and reactive self-hosted docker compose.yaml stack-oriented manager",
+  "icon": "📦",
+  "port": 5001,
+  "path": "/",
+  "healthCheck": "http://localhost:5001",
+  "tags": ["docker", "management", "compose", "infrastructure"]
+}

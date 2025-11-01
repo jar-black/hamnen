@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: hamnen_sabnzbd
+    restart: unless-stopped
+    ports:
+      - "8099:8080"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/downloads:/downloads
+      - ./volumes/incomplete:/incomplete-downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

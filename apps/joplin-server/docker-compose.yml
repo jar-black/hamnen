@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  joplin:
+    image: joplin/server:latest
+    container_name: hamnen_joplin_server
+    restart: unless-stopped
+    ports:
+      - "22300:22300"
+    volumes:
+      - ./volumes/data:/data
+    environment:
+      - APP_PORT=22300
+      - APP_BASE_URL=http://localhost:22300
+      - DB_CLIENT=pg
+      - POSTGRES_PASSWORD=joplin
+      - POSTGRES_DATABASE=joplin
+      - POSTGRES_USER=joplin
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=joplin_db
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    container_name: hamnen_joplin_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=joplin
+      - POSTGRES_USER=joplin
+      - POSTGRES_DB=joplin
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

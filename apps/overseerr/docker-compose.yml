@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: hamnen_overseerr
+    restart: unless-stopped
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./volumes/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

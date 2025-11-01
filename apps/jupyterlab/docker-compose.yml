@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  jupyterlab:
+    image: jupyter/scipy-notebook:latest
+    container_name: hamnen_jupyterlab
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./volumes/work:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=hamnen
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

@@ -1,0 +1,9 @@
+{
+  "name": "FileRun",
+  "description": "Self-hosted file manager and file sharing application",
+  "icon": "📂",
+  "port": 8116,
+  "path": "/",
+  "healthCheck": "http://localhost:8116",
+  "tags": ["files", "manager", "sharing"]
+}

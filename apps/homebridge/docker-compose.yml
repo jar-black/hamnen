@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  homebridge:
+    image: homebridge/homebridge:latest
+    container_name: hamnen_homebridge
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./volumes/config:/homebridge
+    environment:
+      - TZ=UTC
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8103

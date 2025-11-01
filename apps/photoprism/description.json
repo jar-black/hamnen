@@ -1,0 +1,9 @@
+{
+  "name": "PhotoPrism",
+  "description": "AI-powered photos app for the decentralized web",
+  "icon": "📸",
+  "port": 2342,
+  "path": "/",
+  "healthCheck": "http://localhost:2342",
+  "tags": ["photos", "ai", "gallery", "media"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Deluge",
+  "description": "Lightweight, Free Software, cross-platform BitTorrent client",
+  "icon": "🌊",
+  "port": 8112,
+  "path": "/",
+  "healthCheck": "http://localhost:8112",
+  "tags": ["download", "torrent", "p2p"]
+}

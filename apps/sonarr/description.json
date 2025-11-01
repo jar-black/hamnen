@@ -1,0 +1,9 @@
+{
+  "name": "Sonarr",
+  "description": "PVR for Usenet and BitTorrent users - automatically downloads TV shows",
+  "icon": "📺",
+  "port": 8989,
+  "path": "/",
+  "healthCheck": "http://localhost:8989",
+  "tags": ["media", "automation", "tv", "pvr"]
+}

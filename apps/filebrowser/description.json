@@ -1,0 +1,9 @@
+{
+  "name": "FileBrowser",
+  "description": "Web file browser with a clean and simple interface",
+  "icon": "🗂️",
+  "port": 8117,
+  "path": "/",
+  "healthCheck": "http://localhost:8117",
+  "tags": ["files", "browser", "manager"]
+}

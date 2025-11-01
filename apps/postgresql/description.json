@@ -1,0 +1,9 @@
+{
+  "name": "PostgreSQL",
+  "description": "Powerful, open source object-relational database system",
+  "icon": "🐘",
+  "port": 5432,
+  "path": "/",
+  "healthCheck": "http://localhost:5432",
+  "tags": ["database", "sql", "relational", "postgres"]
+}

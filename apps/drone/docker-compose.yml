@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  drone:
+    image: drone/drone:latest
+    container_name: hamnen_drone
+    restart: unless-stopped
+    ports:
+      - "8122:80"
+    volumes:
+      - ./volumes/data:/data
+    environment:
+      - DRONE_GITEA_SERVER=http://gitea:3000
+      - DRONE_SERVER_HOST=localhost:8122
+      - DRONE_SERVER_PROTO=http
+      - DRONE_RPC_SECRET=hamnen_secret
+      - DRONE_USER_CREATE=username:admin,admin:true
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

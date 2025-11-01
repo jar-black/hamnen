@@ -1,0 +1,9 @@
+{
+  "name": "Ollama",
+  "description": "Get up and running with large language models locally",
+  "icon": "🦙",
+  "port": 11434,
+  "path": "/",
+  "healthCheck": "http://localhost:11434",
+  "tags": ["ai", "llm", "machine-learning", "local"]
+}

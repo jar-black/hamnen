@@ -1,0 +1,9 @@
+{
+  "name": "Seafile",
+  "description": "High performance file syncing and sharing with encryption",
+  "icon": "🌊",
+  "port": 8118,
+  "path": "/",
+  "healthCheck": "http://localhost:8118",
+  "tags": ["files", "sync", "cloud", "encryption"]
+}

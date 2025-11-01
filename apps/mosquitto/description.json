@@ -1,0 +1,9 @@
+{
+  "name": "Mosquitto",
+  "description": "Open source message broker that implements MQTT protocol",
+  "icon": "🦟",
+  "port": 1883,
+  "path": "/",
+  "healthCheck": "http://localhost:1883",
+  "tags": ["mqtt", "iot", "messaging", "broker"]
+}

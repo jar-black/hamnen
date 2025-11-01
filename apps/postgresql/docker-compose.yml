@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: hamnen_postgresql
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./volumes/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=hamnen
+      - POSTGRES_PASSWORD=hamnen_password
+      - POSTGRES_DB=hamnen_db
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

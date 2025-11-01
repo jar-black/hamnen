@@ -1,0 +1,9 @@
+{
+  "name": "Overseerr",
+  "description": "Request management and media discovery tool for Plex ecosystem",
+  "icon": "🎫",
+  "port": 5055,
+  "path": "/",
+  "healthCheck": "http://localhost:5055",
+  "tags": ["media", "requests", "plex", "discovery"]
+}

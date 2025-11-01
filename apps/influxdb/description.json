@@ -1,0 +1,9 @@
+{
+  "name": "InfluxDB",
+  "description": "Time series database designed to handle high write and query loads",
+  "icon": "📊",
+  "port": 8086,
+  "path": "/",
+  "healthCheck": "http://localhost:8086/health",
+  "tags": ["database", "time-series", "monitoring", "metrics"]
+}

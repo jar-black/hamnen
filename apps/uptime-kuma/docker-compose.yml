@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: hamnen_uptime_kuma
+    restart: unless-stopped
+    ports:
+      - "3002:3001"
+    volumes:
+      - ./volumes/data:/app/data
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

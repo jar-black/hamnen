@@ -1,0 +1,9 @@
+{
+  "name": "CouchDB",
+  "description": "Seamless multi-master sync, stores data safely on your own servers",
+  "icon": "🛋️",
+  "port": 5984,
+  "path": "/",
+  "healthCheck": "http://localhost:5984",
+  "tags": ["database", "nosql", "document-db", "sync"]
+}

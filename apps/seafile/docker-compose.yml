@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  seafile:
+    image: seafileltd/seafile-mc:latest
+    container_name: hamnen_seafile
+    restart: unless-stopped
+    ports:
+      - "8118:80"
+    volumes:
+      - ./volumes/data:/shared
+    environment:
+      - DB_HOST=seafile_db
+      - DB_ROOT_PASSWD=seafile_root
+      - SEAFILE_ADMIN_EMAIL=admin@example.com
+      - SEAFILE_ADMIN_PASSWORD=hamnen
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: hamnen_seafile_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=seafile_root
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

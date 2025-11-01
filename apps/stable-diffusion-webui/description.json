@@ -1,0 +1,9 @@
+{
+  "name": "Stable Diffusion WebUI",
+  "description": "Web interface for Stable Diffusion AI image generation",
+  "icon": "🎨",
+  "port": 7860,
+  "path": "/",
+  "healthCheck": "http://localhost:7860",
+  "tags": ["ai", "image-generation", "stable-diffusion", "ml"]
+}

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: hamnen_code_server
+    restart: unless-stopped
+    ports:
+      - "8123:8443"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/projects:/projects
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - PASSWORD=hamnen
+      - SUDO_PASSWORD=hamnen
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

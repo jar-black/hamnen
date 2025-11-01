@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  librespeed:
+    image: lscr.io/linuxserver/librespeed:latest
+    container_name: hamnen_librespeed
+    restart: unless-stopped
+    ports:
+      - "8111:80"
+    volumes:
+      - ./volumes/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

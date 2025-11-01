@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: hamnen_dozzle
+    restart: unless-stopped
+    ports:
+      - "8107:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

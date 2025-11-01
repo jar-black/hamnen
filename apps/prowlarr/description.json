@@ -1,0 +1,9 @@
+{
+  "name": "Prowlarr",
+  "description": "Indexer manager/proxy built on the popular *arr .net/reactjs base stack",
+  "icon": "🔎",
+  "port": 9696,
+  "path": "/",
+  "healthCheck": "http://localhost:9696",
+  "tags": ["media", "indexer", "automation", "arr"]
+}

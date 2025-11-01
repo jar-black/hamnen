@@ -1,0 +1,9 @@
+{
+  "name": "Vaultwarden",
+  "description": "Unofficial Bitwarden compatible server written in Rust",
+  "icon": "🔑",
+  "port": 8105,
+  "path": "/",
+  "healthCheck": "http://localhost:8105",
+  "tags": ["password", "security", "vault", "bitwarden"]
+}

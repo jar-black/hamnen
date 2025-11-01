@@ -1,0 +1,9 @@
+{
+  "name": "SABnzbd",
+  "description": "Free and easy binary newsreader for Usenet",
+  "icon": "📰",
+  "port": 8099,
+  "path": "/",
+  "healthCheck": "http://localhost:8099",
+  "tags": ["download", "usenet", "nzb"]
+}

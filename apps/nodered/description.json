@@ -1,0 +1,9 @@
+{
+  "name": "Node-RED",
+  "description": "Flow-based programming for the Internet of Things",
+  "icon": "🔴",
+  "port": 1880,
+  "path": "/",
+  "healthCheck": "http://localhost:1880",
+  "tags": ["automation", "iot", "flow", "programming"]
+}

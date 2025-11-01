@@ -1,0 +1,9 @@
+{
+  "name": "Nginx Proxy Manager",
+  "description": "Docker container for managing Nginx proxy hosts with a simple, powerful interface",
+  "icon": "🔀",
+  "port": 81,
+  "path": "/",
+  "healthCheck": "http://localhost:81",
+  "tags": ["proxy", "nginx", "ssl", "reverse-proxy"]
+}

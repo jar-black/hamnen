@@ -1,0 +1,9 @@
+{
+  "name": "Home Assistant",
+  "description": "Open source home automation that puts local control and privacy first",
+  "icon": "🏠",
+  "port": 8123,
+  "path": "/",
+  "healthCheck": "http://localhost:8123",
+  "tags": ["home-automation", "iot", "smart-home"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Bookstack",
+  "description": "Simple, self-hosted, easy-to-use platform for organizing and storing information",
+  "icon": "📚",
+  "port": 8124,
+  "path": "/",
+  "healthCheck": "http://localhost:8124",
+  "tags": ["wiki", "documentation", "knowledge-base", "productivity"]
+}

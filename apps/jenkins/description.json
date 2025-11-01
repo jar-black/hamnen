@@ -1,0 +1,9 @@
+{
+  "name": "Jenkins",
+  "description": "Leading open source automation server for CI/CD",
+  "icon": "👷",
+  "port": 8121,
+  "path": "/",
+  "healthCheck": "http://localhost:8121",
+  "tags": ["ci-cd", "automation", "build", "development"]
+}

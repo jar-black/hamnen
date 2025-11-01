@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nzbget:
+    image: lscr.io/linuxserver/nzbget:latest
+    container_name: hamnen_nzbget
+    restart: unless-stopped
+    ports:
+      - "6789:6789"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

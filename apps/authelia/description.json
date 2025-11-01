@@ -1,0 +1,9 @@
+{
+  "name": "Authelia",
+  "description": "Single Sign-On Multi-Factor portal for web apps",
+  "icon": "👤",
+  "port": 9092,
+  "path": "/",
+  "healthCheck": "http://localhost:9092",
+  "tags": ["authentication", "sso", "2fa", "security"]
+}

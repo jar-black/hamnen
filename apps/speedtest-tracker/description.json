@@ -1,0 +1,9 @@
+{
+  "name": "Speedtest Tracker",
+  "description": "Self-hosted internet performance tracking application",
+  "icon": "🚀",
+  "port": 8110,
+  "path": "/",
+  "healthCheck": "http://localhost:8110",
+  "tags": ["monitoring", "speedtest", "network", "performance"]
+}

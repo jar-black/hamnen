@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: hamnen_navidrome
+    restart: unless-stopped
+    ports:
+      - "4533:4533"
+    volumes:
+      - ./volumes/data:/data
+      - ./volumes/music:/music:ro
+    environment:
+      - ND_LOGLEVEL=info
+      - ND_BASEURL=/
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

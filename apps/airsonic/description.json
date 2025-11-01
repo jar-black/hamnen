@@ -1,0 +1,9 @@
+{
+  "name": "Airsonic",
+  "description": "Free, web-based media streamer providing ubiquitous access to your music",
+  "icon": "🎧",
+  "port": 4040,
+  "path": "/",
+  "healthCheck": "http://localhost:4040",
+  "tags": ["music", "streaming", "subsonic", "media"]
+}

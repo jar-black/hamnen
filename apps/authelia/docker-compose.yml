@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  authelia:
+    image: authelia/authelia:latest
+    container_name: hamnen_authelia
+    restart: unless-stopped
+    ports:
+      - "9092:9091"
+    volumes:
+      - ./volumes/config:/config
+    environment:
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

@@ -1,0 +1,9 @@
+{
+  "name": "Drone",
+  "description": "Container-native continuous delivery platform",
+  "icon": "🚁",
+  "port": 8122,
+  "path": "/",
+  "healthCheck": "http://localhost:8122",
+  "tags": ["ci-cd", "automation", "containers", "development"]
+}

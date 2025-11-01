@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: hamnen_influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./volumes/data:/var/lib/influxdb2
+      - ./volumes/config:/etc/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=hamnen
+      - DOCKER_INFLUXDB_INIT_PASSWORD=hamnenpassword
+      - DOCKER_INFLUXDB_INIT_ORG=hamnen
+      - DOCKER_INFLUXDB_INIT_BUCKET=default
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

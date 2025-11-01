@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  yacht:
+    image: selfhostedpro/yacht:latest
+    container_name: hamnen_yacht
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./volumes/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

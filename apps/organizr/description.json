@@ -1,0 +1,9 @@
+{
+  "name": "Organizr",
+  "description": "HTPC/Homelab services organizer with tabs and authentication",
+  "icon": "📋",
+  "port": 8114,
+  "path": "/",
+  "healthCheck": "http://localhost:8114",
+  "tags": ["dashboard", "organizer", "htpc"]
+}

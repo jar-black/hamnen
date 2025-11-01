@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  airsonic:
+    image: lscr.io/linuxserver/airsonic-advanced:latest
+    container_name: hamnen_airsonic
+    restart: unless-stopped
+    ports:
+      - "4040:4040"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/music:/music
+      - ./volumes/playlists:/playlists
+      - ./volumes/podcasts:/podcasts
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  statping:
+    image: statping/statping:latest
+    container_name: hamnen_statping
+    restart: unless-stopped
+    ports:
+      - "8112:8080"
+    volumes:
+      - ./volumes/app:/app
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

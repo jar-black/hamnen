@@ -1,0 +1,9 @@
+{
+  "name": "Nextcloud",
+  "description": "Safe home for all your data with file sync and sharing",
+  "icon": "☁️",
+  "port": 8115,
+  "path": "/",
+  "healthCheck": "http://localhost:8115",
+  "tags": ["files", "cloud", "sync", "collaboration"]
+}

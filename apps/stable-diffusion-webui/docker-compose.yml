@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  stable-diffusion-webui:
+    image: ghcr.io/abetlen/llama-cpp-python:latest
+    container_name: hamnen_stable_diffusion
+    restart: unless-stopped
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./volumes/data:/data
+      - ./volumes/output:/output
+    environment:
+      - CLI_ARGS=--allow-code --medvram --xformers --enable-insecure-extension-access --api
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

@@ -1,0 +1,9 @@
+{
+  "name": "Heimdall",
+  "description": "Application dashboard and launcher with a modern design",
+  "icon": "🏛️",
+  "port": 8113,
+  "path": "/",
+  "healthCheck": "http://localhost:8113",
+  "tags": ["dashboard", "launcher", "homepage"]
+}

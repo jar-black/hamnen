@@ -1,0 +1,9 @@
+{
+  "name": "Restic",
+  "description": "Fast, secure, efficient backup program with web UI",
+  "icon": "🔐",
+  "port": 8119,
+  "path": "/",
+  "healthCheck": "http://localhost:8119",
+  "tags": ["backup", "encryption", "deduplication"]
+}

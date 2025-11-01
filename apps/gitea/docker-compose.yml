@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: hamnen_gitea
+    restart: unless-stopped
+    ports:
+      - "3005:3000"
+      - "2223:22"
+    volumes:
+      - ./volumes/data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=sqlite3
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

@@ -1,0 +1,9 @@
+{
+  "name": "Pi-hole",
+  "description": "Network-wide ad blocking via your own Linux hardware",
+  "icon": "🕳️",
+  "port": 8104,
+  "path": "/admin",
+  "healthCheck": "http://localhost:8104/admin",
+  "tags": ["dns", "adblock", "network", "privacy"]
+}

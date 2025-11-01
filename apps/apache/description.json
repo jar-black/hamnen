@@ -1,0 +1,9 @@
+{
+  "name": "Apache",
+  "description": "The Apache HTTP Server - world's most used web server software",
+  "icon": "🪶",
+  "port": 8091,
+  "path": "/",
+  "healthCheck": "http://localhost:8091",
+  "tags": ["web-server", "http", "hosting"]
+}

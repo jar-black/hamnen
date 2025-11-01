@@ -1,0 +1,9 @@
+{
+  "name": "Dashy",
+  "description": "Feature-rich homepage for your homelab with easy YAML configuration",
+  "icon": "📱",
+  "port": 4000,
+  "path": "/",
+  "healthCheck": "http://localhost:4000",
+  "tags": ["dashboard", "homepage", "launcher"]
+}

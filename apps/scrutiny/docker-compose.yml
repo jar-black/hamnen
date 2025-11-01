@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  scrutiny:
+    image: ghcr.io/analogj/scrutiny:master-omnibus
+    container_name: hamnen_scrutiny
+    restart: unless-stopped
+    ports:
+      - "8109:8080"
+    volumes:
+      - /run/udev:/run/udev:ro
+      - ./volumes/config:/opt/scrutiny/config
+      - ./volumes/influxdb:/opt/scrutiny/influxdb
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - /dev/sda
+      - /dev/sdb
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

@@ -1,0 +1,9 @@
+{
+  "name": "cAdvisor",
+  "description": "Container Advisor - analyzes resource usage and performance of containers",
+  "icon": "📦",
+  "port": 8108,
+  "path": "/",
+  "healthCheck": "http://localhost:8108",
+  "tags": ["monitoring", "docker", "containers", "metrics"]
+}

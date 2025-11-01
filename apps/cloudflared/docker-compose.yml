@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: hamnen_cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=your_token_here
+    volumes:
+      - ./volumes/config:/etc/cloudflared
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

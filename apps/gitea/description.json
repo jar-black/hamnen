@@ -1,0 +1,9 @@
+{
+  "name": "Gitea",
+  "description": "Painless self-hosted Git service written in Go",
+  "icon": "🍵",
+  "port": 3005,
+  "path": "/",
+  "healthCheck": "http://localhost:3005",
+  "tags": ["git", "repository", "lightweight", "development"]
+}

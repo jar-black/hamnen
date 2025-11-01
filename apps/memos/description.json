@@ -1,0 +1,9 @@
+{
+  "name": "Memos",
+  "description": "Privacy-first, lightweight note-taking service with markdown support",
+  "icon": "📋",
+  "port": 5230,
+  "path": "/",
+  "healthCheck": "http://localhost:5230",
+  "tags": ["notes", "memo", "productivity", "markdown"]
+}

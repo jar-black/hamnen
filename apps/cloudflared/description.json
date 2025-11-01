@@ -1,0 +1,9 @@
+{
+  "name": "Cloudflare Tunnel",
+  "description": "Secure tunnel to expose local services via Cloudflare",
+  "icon": "☁️",
+  "port": 8106,
+  "path": "/",
+  "healthCheck": "http://localhost:8106",
+  "tags": ["tunnel", "cloudflare", "proxy", "security"]
+}

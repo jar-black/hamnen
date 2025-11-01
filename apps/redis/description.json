@@ -1,0 +1,9 @@
+{
+  "name": "Redis",
+  "description": "In-memory data structure store, used as database, cache, and message broker",
+  "icon": "📮",
+  "port": 6379,
+  "path": "/",
+  "healthCheck": "http://localhost:6379",
+  "tags": ["database", "cache", "in-memory", "key-value"]
+}

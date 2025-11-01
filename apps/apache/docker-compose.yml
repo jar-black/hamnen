@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  apache:
+    image: httpd:latest
+    container_name: hamnen_apache
+    restart: unless-stopped
+    ports:
+      - "8091:80"
+    volumes:
+      - ./volumes/htdocs:/usr/local/apache2/htdocs
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

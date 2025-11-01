@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.11.0
+    container_name: hamnen_elasticsearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./volumes/data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=hamnen_password
+      - xpack.security.enabled=false
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

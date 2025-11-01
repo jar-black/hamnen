@@ -1,0 +1,9 @@
+{
+  "name": "Dozzle",
+  "description": "Real-time log viewer for docker containers",
+  "icon": "📝",
+  "port": 8107,
+  "path": "/",
+  "healthCheck": "http://localhost:8107",
+  "tags": ["docker", "logs", "monitoring"]
+}

@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: hamnen_paperless_ngx
+    restart: unless-stopped
+    ports:
+      - "8127:8000"
+    volumes:
+      - ./volumes/data:/usr/src/paperless/data
+      - ./volumes/media:/usr/src/paperless/media
+      - ./volumes/export:/usr/src/paperless/export
+      - ./volumes/consume:/usr/src/paperless/consume
+    environment:
+      - PAPERLESS_REDIS=redis://paperless_redis:6379
+      - PAPERLESS_DBHOST=paperless_db
+      - PAPERLESS_DBNAME=paperless
+      - PAPERLESS_DBUSER=paperless
+      - PAPERLESS_DBPASS=paperless
+      - PAPERLESS_SECRET_KEY=hamnen_secret_key
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:14
+    container_name: hamnen_paperless_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=paperless
+      - POSTGRES_USER=paperless
+      - POSTGRES_PASSWORD=paperless
+
+  redis:
+    image: redis:7
+    container_name: hamnen_paperless_redis
+    restart: unless-stopped
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

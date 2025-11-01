@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: hamnen_deluge
+    restart: unless-stopped
+    ports:
+      - "8112:8112"
+      - "6882:6881"
+      - "6882:6881/udp"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - DELUGE_LOGLEVEL=info
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

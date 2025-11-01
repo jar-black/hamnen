@@ -1,0 +1,9 @@
+{
+  "name": "Homebridge",
+  "description": "HomeKit support for the impatient - add HomeKit to any smart home device",
+  "icon": "🌉",
+  "port": 8103,
+  "path": "/",
+  "healthCheck": "http://localhost:8103",
+  "tags": ["homekit", "smart-home", "apple", "automation"]
+}

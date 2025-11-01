@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  photoprism:
+    image: photoprism/photoprism:latest
+    container_name: hamnen_photoprism
+    restart: unless-stopped
+    ports:
+      - "2342:2342"
+    volumes:
+      - ./volumes/originals:/photoprism/originals
+      - ./volumes/storage:/photoprism/storage
+    environment:
+      - PHOTOPRISM_ADMIN_USER=admin
+      - PHOTOPRISM_ADMIN_PASSWORD=hamnen
+      - PHOTOPRISM_AUTH_MODE=password
+      - PHOTOPRISM_SITE_URL=http://localhost:2342/
+      - PHOTOPRISM_DISABLE_TLS=true
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

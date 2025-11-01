@@ -1,0 +1,9 @@
+{
+  "name": "Lidarr",
+  "description": "Music collection manager for Usenet and BitTorrent users",
+  "icon": "🎵",
+  "port": 8686,
+  "path": "/",
+  "healthCheck": "http://localhost:8686",
+  "tags": ["media", "automation", "music", "pvr"]
+}

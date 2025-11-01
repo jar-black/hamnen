@@ -1,0 +1,9 @@
+{
+  "name": "GitLab",
+  "description": "Complete DevOps platform with Git repository manager, CI/CD, and more",
+  "icon": "🦊",
+  "port": 8120,
+  "path": "/",
+  "healthCheck": "http://localhost:8120",
+  "tags": ["git", "devops", "ci-cd", "development"]
+}

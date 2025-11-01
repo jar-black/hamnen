@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  nodered:
+    image: nodered/node-red:latest
+    container_name: hamnen_nodered
+    restart: unless-stopped
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./volumes/data:/data
+    environment:
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

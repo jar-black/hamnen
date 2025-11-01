@@ -1,0 +1,9 @@
+{
+  "name": "Jellyfin",
+  "description": "Free Software Media System that puts you in control of your media",
+  "icon": "🎞️",
+  "port": 8096,
+  "path": "/",
+  "healthCheck": "http://localhost:8096",
+  "tags": ["media", "streaming", "free", "movies", "tv"]
+}

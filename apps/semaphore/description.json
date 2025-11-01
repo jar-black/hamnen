@@ -1,0 +1,9 @@
+{
+  "name": "Ansible Semaphore",
+  "description": "Modern UI for Ansible with task execution and inventory management",
+  "icon": "🎯",
+  "port": 3006,
+  "path": "/",
+  "healthCheck": "http://localhost:3006",
+  "tags": ["ansible", "automation", "orchestration", "devops"]
+}
