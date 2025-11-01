@@ -1,9 +1,9 @@
-const { exec } = require('child_process');
+const { execFile } = require('child_process');
 const { promisify } = require('util');
 const path = require('path');
 const fs = require('fs').promises;
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 class DockerManager {
   constructor() {
@@ -14,8 +14,9 @@ class DockerManager {
   /**
    * Execute docker-compose command
    * @param {string} appId - App ID which can be "appname" or "category/appname"
+   * @param {Array<string>} commandArgs - Array of command arguments (e.g., ['up', '-d'])
    */
-  async executeDockerCompose(appId, command, options = {}) {
+  async executeDockerCompose(appId, commandArgs, options = {}) {
     const appPath = path.join(this.appsDir, appId);
     const composeFile = path.join(appPath, 'docker-compose.yml');
 
@@ -26,13 +27,21 @@ class DockerManager {
       throw new Error(`docker-compose.yml not found for ${appId}`);
     }
 
+    // Validate appId to prevent path traversal
+    if (appId.includes('..') || appId.startsWith('/')) {
+      throw new Error('Invalid app ID');
+    }
+
     // Use sanitized app name for project (replace / with -)
     const projectName = `hamnen_${appId.replace(/\//g, '-')}`;
-    const cmd = `docker-compose -f ${composeFile} -p ${projectName} ${command}`;
+
+    // Build argument array safely (no shell interpretation)
+    const args = ['-f', composeFile, '-p', projectName, ...commandArgs];
 
     try {
-      const { stdout, stderr } = await execAsync(cmd, {
+      const { stdout, stderr } = await execFileAsync('docker-compose', args, {
         cwd: appPath,
+        maxBuffer: 10 * 1024 * 1024, // 10MB buffer
         ...options
       });
       return { stdout, stderr, success: true };
@@ -45,14 +54,14 @@ class DockerManager {
    * Start an application
    */
   async startApp(appName) {
-    return await this.executeDockerCompose(appName, 'up -d');
+    return await this.executeDockerCompose(appName, ['up', '-d']);
   }
 
   /**
    * Stop an application
    */
   async stopApp(appName) {
-    return await this.executeDockerCompose(appName, 'down');
+    return await this.executeDockerCompose(appName, ['down']);
   }
 
   /**
@@ -60,7 +69,7 @@ class DockerManager {
    */
   async getAppStatus(appName) {
     try {
-      const result = await this.executeDockerCompose(appName, 'ps --format json');
+      const result = await this.executeDockerCompose(appName, ['ps', '--format', 'json']);
       const containers = result.stdout
         .split('\n')
         .filter(line => line.trim())
@@ -95,8 +104,14 @@ class DockerManager {
    * Get application logs
    */
   async getAppLogs(appName, lines = 100) {
+    // Validate lines parameter to prevent injection
+    const validatedLines = parseInt(lines, 10);
+    if (isNaN(validatedLines) || validatedLines < 1 || validatedLines > 10000) {
+      throw new Error('Invalid lines parameter. Must be between 1 and 10000');
+    }
+
     try {
-      const result = await this.executeDockerCompose(appName, `logs --tail=${lines}`);
+      const result = await this.executeDockerCompose(appName, ['logs', `--tail=${validatedLines}`]);
       return result.stdout;
     } catch (error) {
       throw new Error(`Failed to get logs: ${error.message}`);
