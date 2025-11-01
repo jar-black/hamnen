@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
 import AppCard from './components/AppCard';
+import ToastContainer from './components/ToastContainer';
 
 // Connect to WebSocket server
 const socket = io(process.env.REACT_APP_API_URL || 'http://localhost:3001');
@@ -12,6 +13,7 @@ function App() {
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('');
   const [showRunningOnly, setShowRunningOnly] = useState(false);
+  const [toasts, setToasts] = useState([]);
 
   useEffect(() => {
     loadApps();
@@ -43,13 +45,27 @@ function App() {
       setError(null);
     } catch (err) {
       setError(err.message);
+      showToast(err.message, 'error');
     } finally {
       setLoading(false);
     }
   };
 
+  // Toast management functions
+  const showToast = (message, type = 'info', duration = 3000) => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, message, type, duration }]);
+  };
+
+  const removeToast = (id) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+  };
+
   const handleStart = async (appId) => {
     try {
+      const app = apps.find(a => a.id === appId);
+      showToast(`Starting ${app?.name || appId}...`, 'info');
+
       const response = await fetch(`/api/apps/${appId}/start`, {
         method: 'POST'
       });
@@ -61,6 +77,8 @@ function App() {
       // Update app status immediately
       await loadApps();
 
+      showToast(`${app?.name || appId} started successfully!`, 'success');
+
       // Redirect after a short delay
       if (data.url) {
         setTimeout(() => {
@@ -70,12 +88,16 @@ function App() {
 
       return data;
     } catch (err) {
+      showToast(err.message, 'error');
       throw err;
     }
   };
 
   const handleStop = async (appId) => {
     try {
+      const app = apps.find(a => a.id === appId);
+      showToast(`Stopping ${app?.name || appId}...`, 'info');
+
       const response = await fetch(`/api/apps/${appId}/stop`, {
         method: 'POST'
       });
@@ -84,7 +106,10 @@ function App() {
 
       // Update app status immediately
       await loadApps();
+
+      showToast(`${app?.name || appId} stopped successfully!`, 'success');
     } catch (err) {
+      showToast(err.message, 'error');
       throw err;
     }
   };
@@ -188,6 +213,9 @@ function App() {
           ))
         )}
       </div>
+
+      {/* Toast notifications */}
+      <ToastContainer toasts={toasts} removeToast={removeToast} />
     </div>
   );
 }
