@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 import './App.css';
 import AppCard from './components/AppCard';
+
+// Connect to WebSocket server
+const socket = io(process.env.REACT_APP_API_URL || 'http://localhost:3001');
 
 function App() {
   const [apps, setApps] = useState([]);
@@ -11,9 +15,23 @@ function App() {
 
   useEffect(() => {
     loadApps();
-    // Refresh app status every 5 seconds
-    const interval = setInterval(loadApps, 5000);
-    return () => clearInterval(interval);
+
+    // Listen for WebSocket status updates (real-time)
+    socket.on('app:status', (data) => {
+      console.log('WebSocket update:', data);
+      setApps(prevApps =>
+        prevApps.map(app =>
+          app.id === data.appId
+            ? { ...app, status: data.status }
+            : app
+        )
+      );
+    });
+
+    // Cleanup on unmount
+    return () => {
+      socket.off('app:status');
+    };
   }, []);
 
   const loadApps = async () => {

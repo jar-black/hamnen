@@ -80,6 +80,12 @@ async function startApp(req, res) {
       return res.status(404).json({ error: 'Application not found', code: 'APP_NOT_FOUND' });
     }
 
+    // Get WebSocket instance
+    const io = req.app.get('io');
+
+    // Emit starting status
+    io.emit('app:status', { appId, status: 'starting' });
+
     // Start the application
     await dockerManager.startApp(appId);
     logger.info(`Application started successfully: ${appId}`, { appName: app.name });
@@ -94,6 +100,9 @@ async function startApp(req, res) {
     // Update cache with new status
     cache.setAppStatus(appId, status);
 
+    // Emit updated status via WebSocket
+    io.emit('app:status', { appId, status: status.status, app });
+
     res.json({
       message: `Application ${app.name || appId} started`,
       status,
@@ -105,6 +114,11 @@ async function startApp(req, res) {
       stack: error.stack,
       ip: req.ip
     });
+
+    // Emit error status
+    const io = req.app.get('io');
+    io.emit('app:status', { appId, status: 'error', error: error.message });
+
     res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
@@ -118,6 +132,12 @@ async function stopApp(req, res) {
   try {
     logger.info(`Stopping application: ${appId}`, { ip: req.ip });
 
+    // Get WebSocket instance
+    const io = req.app.get('io');
+
+    // Emit stopping status
+    io.emit('app:status', { appId, status: 'stopping' });
+
     await dockerManager.stopApp(appId);
 
     logger.info(`Application stopped successfully: ${appId}`);
@@ -125,6 +145,9 @@ async function stopApp(req, res) {
     // Invalidate and update cache
     cache.invalidateAppStatus(appId);
     cache.setAppStatus(appId, { status: 'stopped', containers: [] });
+
+    // Emit stopped status via WebSocket
+    io.emit('app:status', { appId, status: 'stopped' });
 
     res.json({
       message: `Application ${appId} stopped`,
@@ -136,6 +159,11 @@ async function stopApp(req, res) {
       stack: error.stack,
       ip: req.ip
     });
+
+    // Emit error status
+    const io = req.app.get('io');
+    io.emit('app:status', { appId, status: 'error', error: error.message });
+
     res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }

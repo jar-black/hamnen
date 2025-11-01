@@ -2,11 +2,24 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
+const http = require('http');
+const { Server } = require('socket.io');
 const appsRouter = require('./routes/apps');
 const logger = require('./utils/logger');
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+});
+
 const PORT = process.env.PORT || 3001;
+
+// Make io available to routes/controllers
+app.set('io', io);
 
 // HTTP request logging with Morgan
 app.use(morgan('combined', { stream: logger.stream }));
@@ -45,9 +58,30 @@ app.use((err, req, res, next) => {
   });
 });
 
+// WebSocket connection handling
+io.on('connection', (socket) => {
+  logger.info(`WebSocket client connected: ${socket.id}`);
+
+  socket.on('disconnect', () => {
+    logger.info(`WebSocket client disconnected: ${socket.id}`);
+  });
+
+  // Allow clients to subscribe to specific app updates
+  socket.on('subscribe:app', (appId) => {
+    socket.join(`app:${appId}`);
+    logger.debug(`Client ${socket.id} subscribed to app: ${appId}`);
+  });
+
+  socket.on('unsubscribe:app', (appId) => {
+    socket.leave(`app:${appId}`);
+    logger.debug(`Client ${socket.id} unsubscribed from app: ${appId}`);
+  });
+});
+
 // Start server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   logger.info(`🚀 Hamnen backend server running on port ${PORT}`);
+  logger.info(`WebSocket server enabled`);
   logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  logger.info(`Log level: ${process.env.LOG_LEVEL || 'info'}`);
+  logger.info(`Log level: ${process.env.LOG_LEVEL || 'http'}`);
 });
