@@ -1,0 +1,9 @@
+{
+  "name": "Docker Registry",
+  "description": "Private Docker image storage and distribution",
+  "icon": "📦",
+  "port": 5000,
+  "path": "/v2/",
+  "healthCheck": "http://localhost:5000/v2/",
+  "tags": ["container-registry", "docker", "ci-cd"]
+}

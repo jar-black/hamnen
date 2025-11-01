@@ -1,0 +1,9 @@
+{
+  "name": "Trivy",
+  "description": "Container vulnerability scanner for CI/CD pipelines",
+  "icon": "🔍",
+  "port": 8080,
+  "path": "/",
+  "healthCheck": "http://localhost:8080/healthz",
+  "tags": ["security", "vulnerability-scanner", "ci-cd"]
+}

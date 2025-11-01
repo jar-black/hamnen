@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:5.0
+    container_name: hamnen_rocketchat_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/db:/data/db
+      - ./volumes/dump:/dump
+    command: mongod --oplogSize 128 --replSet rs0
+    networks:
+      - rocketchat_network
+
+  mongo-init-replica:
+    image: mongo:5.0
+    container_name: hamnen_rocketchat_mongo_init
+    command: >
+      bash -c "
+        for i in `seq 1 30`; do
+          mongo mongodb/rocketchat --eval \"
+            rs.initiate({
+              _id: 'rs0',
+              members: [ { _id: 0, host: 'localhost:27017' } ]})\" &&
+          s=$$? && break || s=$$?;
+          echo \"Tried $$i times. Waiting 5 secs...\";
+          sleep 5;
+        done; (exit $$s)
+      "
+    depends_on:
+      - mongodb
+    networks:
+      - rocketchat_network
+
+  rocketchat:
+    image: registry.rocket.chat/rocketchat/rocket.chat:latest
+    container_name: hamnen_rocketchat
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./volumes/uploads:/app/uploads
+    environment:
+      - ROOT_URL=http://localhost:3000
+      - PORT=3000
+      - MONGO_URL=mongodb://mongodb:27017/rocketchat?replicaSet=rs0
+      - MONGO_OPLOG_URL=mongodb://mongodb:27017/local?replicaSet=rs0
+    networks:
+      - rocketchat_network
+    depends_on:
+      - mongodb
+
+networks:
+  rocketchat_network:
+    name: hamnen_rocketchat_network

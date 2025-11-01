@@ -1,0 +1,9 @@
+{
+  "name": "Mattermost",
+  "description": "Team collaboration and chat platform with CI/CD integrations",
+  "icon": "💬",
+  "port": 8065,
+  "path": "/",
+  "healthCheck": "http://localhost:8065/api/v4/system/ping",
+  "tags": ["chat", "collaboration", "ci-cd", "notifications"]
+}

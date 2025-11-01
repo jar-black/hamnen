@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  trivy:
+    image: aquasec/trivy:latest
+    container_name: hamnen_trivy
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./volumes/cache:/root/.cache
+    command: ["server", "--listen", "0.0.0.0:8080"]
+    networks:
+      - trivy_network
+
+networks:
+  trivy_network:
+    name: hamnen_trivy_network

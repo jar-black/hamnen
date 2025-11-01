@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+  registry:
+    image: goharbor/registry-photon:v2.11.0
+    container_name: hamnen_harbor_registry
+    restart: unless-stopped
+    volumes:
+      - ./volumes/registry:/storage
+      - ./volumes/config:/etc/registry
+    environment:
+      - REGISTRY_HTTP_ADDR=0.0.0.0:5000
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/storage
+    networks:
+      - harbor
+
+  registryctl:
+    image: goharbor/harbor-registryctl:v2.11.0
+    container_name: hamnen_harbor_registryctl
+    restart: unless-stopped
+    volumes:
+      - ./volumes/registry:/storage
+      - ./volumes/config:/etc/registry
+      - ./volumes/registryctl:/etc/registryctl
+    environment:
+      - CORE_SECRET=hamnen_harbor_secret
+      - JOBSERVICE_SECRET=hamnen_jobservice_secret
+    networks:
+      - harbor
+    depends_on:
+      - registry
+
+  postgresql:
+    image: goharbor/harbor-db:v2.11.0
+    container_name: hamnen_harbor_db
+    restart: unless-stopped
+    volumes:
+      - ./volumes/database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root123
+    networks:
+      - harbor
+
+  core:
+    image: goharbor/harbor-core:v2.11.0
+    container_name: hamnen_harbor_core
+    restart: unless-stopped
+    volumes:
+      - ./volumes/config:/etc/core
+      - ./volumes/ca:/etc/core/ca
+      - ./volumes/psc:/etc/core/token
+    environment:
+      - CORE_SECRET=hamnen_harbor_secret
+      - JOBSERVICE_SECRET=hamnen_jobservice_secret
+      - EXT_ENDPOINT=http://localhost:8090
+      - CORE_URL=http://core:8080
+      - JOBSERVICE_URL=http://jobservice:8080
+      - REGISTRY_URL=http://registry:5000
+      - REGISTRY_CONTROLLER_URL=http://registryctl:8080
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT=5432
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=root123
+      - POSTGRESQL_DATABASE=registry
+      - POSTGRESQL_SSLMODE=disable
+      - REGISTRY_CREDENTIAL_USERNAME=harbor_registry_user
+      - REGISTRY_CREDENTIAL_PASSWORD=harbor_registry_password
+      - TOKEN_SERVICE_URL=http://core:8080/service/token
+      - WITH_NOTARY=false
+      - WITH_TRIVY=false
+      - WITH_CHARTMUSEUM=false
+    networks:
+      - harbor
+    depends_on:
+      - registry
+      - postgresql
+
+  jobservice:
+    image: goharbor/harbor-jobservice:v2.11.0
+    container_name: hamnen_harbor_jobservice
+    restart: unless-stopped
+    volumes:
+      - ./volumes/job_logs:/var/log/jobs
+    environment:
+      - CORE_SECRET=hamnen_harbor_secret
+      - JOBSERVICE_SECRET=hamnen_jobservice_secret
+      - CORE_URL=http://core:8080
+      - REGISTRY_URL=http://registry:5000
+      - REGISTRY_CONTROLLER_URL=http://registryctl:8080
+      - REGISTRY_CREDENTIAL_USERNAME=harbor_registry_user
+      - REGISTRY_CREDENTIAL_PASSWORD=harbor_registry_password
+    networks:
+      - harbor
+    depends_on:
+      - core
+
+  portal:
+    image: goharbor/harbor-portal:v2.11.0
+    container_name: hamnen_harbor_portal
+    restart: unless-stopped
+    networks:
+      - harbor
+    depends_on:
+      - core
+
+  nginx:
+    image: goharbor/nginx-photon:v2.11.0
+    container_name: hamnen_harbor_nginx
+    restart: unless-stopped
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./volumes/nginx:/etc/nginx/conf.d
+    networks:
+      - harbor
+    depends_on:
+      - portal
+      - core
+      - registry
+
+networks:
+  harbor:
+    name: hamnen_harbor_network

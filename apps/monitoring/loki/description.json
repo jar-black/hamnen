@@ -1,0 +1,9 @@
+{
+  "name": "Loki",
+  "description": "Log aggregation system designed to work with Grafana",
+  "icon": "📋",
+  "port": 3100,
+  "path": "/ready",
+  "healthCheck": "http://localhost:3100/ready",
+  "tags": ["logging", "monitoring", "grafana"]
+}

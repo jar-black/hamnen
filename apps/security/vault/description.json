@@ -1,0 +1,9 @@
+{
+  "name": "HashiCorp Vault",
+  "description": "Secrets and encryption management system for CI/CD pipelines",
+  "icon": "🔐",
+  "port": 8200,
+  "path": "/ui/",
+  "healthCheck": "http://localhost:8200/v1/sys/health",
+  "tags": ["secrets-management", "security", "ci-cd"]
+}
