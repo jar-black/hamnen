@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: hamnen_jackett
+    restart: unless-stopped
+    ports:
+      - "9117:9117"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - AUTO_UPDATE=true
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

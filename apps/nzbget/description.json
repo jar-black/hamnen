@@ -1,0 +1,9 @@
+{
+  "name": "NZBGet",
+  "description": "Efficient Usenet downloader",
+  "icon": "⬇️",
+  "port": 6789,
+  "path": "/",
+  "healthCheck": "http://localhost:6789",
+  "tags": ["download", "usenet", "nzb"]
+}

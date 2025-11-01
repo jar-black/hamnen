@@ -1,0 +1,9 @@
+{
+  "name": "Jackett",
+  "description": "API Support for your favorite torrent trackers",
+  "icon": "🧥",
+  "port": 9117,
+  "path": "/",
+  "healthCheck": "http://localhost:9117",
+  "tags": ["indexer", "torrent", "api"]
+}

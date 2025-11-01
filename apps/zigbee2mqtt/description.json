@@ -1,0 +1,9 @@
+{
+  "name": "Zigbee2MQTT",
+  "description": "Zigbee to MQTT bridge, get rid of proprietary Zigbee bridges",
+  "icon": "📡",
+  "port": 8100,
+  "path": "/",
+  "healthCheck": "http://localhost:8100",
+  "tags": ["zigbee", "mqtt", "iot", "smart-home"]
+}

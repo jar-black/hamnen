@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  domoticz:
+    image: domoticz/domoticz:latest
+    container_name: hamnen_domoticz
+    restart: unless-stopped
+    ports:
+      - "8101:8080"
+      - "6144:6144"
+    volumes:
+      - ./volumes/config:/opt/domoticz/userdata
+    environment:
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

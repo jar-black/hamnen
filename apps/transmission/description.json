@@ -1,0 +1,9 @@
+{
+  "name": "Transmission",
+  "description": "Fast, easy, and free BitTorrent client",
+  "icon": "📥",
+  "port": 9091,
+  "path": "/",
+  "healthCheck": "http://localhost:9091",
+  "tags": ["download", "torrent", "p2p"]
+}

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: hamnen_flaresolverr
+    restart: unless-stopped
+    ports:
+      - "8191:8191"
+    environment:
+      - LOG_LEVEL=info
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

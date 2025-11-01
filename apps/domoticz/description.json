@@ -1,0 +1,9 @@
+{
+  "name": "Domoticz",
+  "description": "Home automation system with a lightweight and simple design",
+  "icon": "🎛️",
+  "port": 8101,
+  "path": "/",
+  "healthCheck": "http://localhost:8101",
+  "tags": ["home-automation", "iot", "smart-home"]
+}

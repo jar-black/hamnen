@@ -1,0 +1,9 @@
+{
+  "name": "FlareSolverr",
+  "description": "Proxy server to bypass Cloudflare protection for web scrapers",
+  "icon": "🔥",
+  "port": 8191,
+  "path": "/",
+  "healthCheck": "http://localhost:8191",
+  "tags": ["proxy", "cloudflare", "scraper"]
+}

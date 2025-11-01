@@ -1,0 +1,9 @@
+{
+  "name": "ESPHome",
+  "description": "System to control ESP8266/ESP32 devices with simple yet powerful configuration",
+  "icon": "💡",
+  "port": 6052,
+  "path": "/",
+  "healthCheck": "http://localhost:6052",
+  "tags": ["esp", "iot", "smart-home", "automation"]
+}

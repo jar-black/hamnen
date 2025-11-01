@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: hamnen_mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./volumes/config:/mosquitto/config
+      - ./volumes/data:/mosquitto/data
+      - ./volumes/log:/mosquitto/log
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

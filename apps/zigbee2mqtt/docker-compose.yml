@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt:latest
+    container_name: hamnen_zigbee2mqtt
+    restart: unless-stopped
+    ports:
+      - "8100:8080"
+    volumes:
+      - ./volumes/data:/app/data
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=UTC
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

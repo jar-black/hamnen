@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  openhab:
+    image: openhab/openhab:latest
+    container_name: hamnen_openhab
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./volumes/addons:/openhab/addons
+      - ./volumes/conf:/openhab/conf
+      - ./volumes/userdata:/openhab/userdata
+    environment:
+      - OPENHAB_HTTP_PORT=8102
+      - OPENHAB_HTTPS_PORT=8443
+      - EXTRA_JAVA_OPTS=-Duser.timezone=UTC
