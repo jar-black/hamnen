@@ -8,7 +8,12 @@
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm start",
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
-    "build:frontend": "cd frontend && npm run build"
+    "build:frontend": "cd frontend && npm run build",
+    "test": "node test.js",
+    "test:docker": "node backend/tests/docker.test.js",
+    "test:api": "node backend/tests/api.test.js",
+    "test:cicd": "node tests/cicd-validation.js",
+    "test:quick": "node test.js --quick"
   },
   "keywords": [
     "docker",
