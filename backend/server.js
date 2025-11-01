@@ -23,6 +23,12 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// Cache statistics endpoint
+app.get('/api/cache/stats', (req, res) => {
+  const cache = require('./utils/cache');
+  res.json(cache.getStats());
+});
+
 // Global error handler
 app.use((err, req, res, next) => {
   logger.error('Unhandled error:', {

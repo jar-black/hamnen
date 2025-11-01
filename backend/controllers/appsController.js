@@ -1,19 +1,35 @@
 const appLoader = require('../utils/appLoader');
 const dockerManager = require('../utils/docker');
 const logger = require('../utils/logger');
+const cache = require('../utils/cache');
 
 /**
  * Get all available applications
  */
 async function listApps(req, res) {
   try {
-    const apps = await appLoader.loadApps();
+    // Try to get app list from cache
+    let apps = cache.getAppList();
 
-    // Get status for each app
+    if (!apps) {
+      // Cache miss - load from filesystem
+      apps = await appLoader.loadApps();
+      cache.setAppList(apps);
+    }
+
+    // Get status for each app (with caching per app)
     const appsWithStatus = await Promise.all(
       apps.map(async (app) => {
         try {
-          const status = await dockerManager.getAppStatus(app.id);
+          // Try cache first
+          let status = cache.getAppStatus(app.id);
+
+          if (!status) {
+            // Cache miss - get from Docker
+            status = await dockerManager.getAppStatus(app.id);
+            cache.setAppStatus(app.id, status);
+          }
+
           return { ...app, status: status.status };
         } catch (error) {
           return { ...app, status: 'unknown' };
@@ -23,7 +39,8 @@ async function listApps(req, res) {
 
     res.json({ apps: appsWithStatus });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    logger.error('Failed to list apps:', { error: error.message, stack: error.stack });
+    res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
 
@@ -67,9 +84,15 @@ async function startApp(req, res) {
     await dockerManager.startApp(appId);
     logger.info(`Application started successfully: ${appId}`, { appName: app.name });
 
+    // Invalidate status cache for this app
+    cache.invalidateAppStatus(appId);
+
     // Wait a moment and get status
     await new Promise(resolve => setTimeout(resolve, 2000));
     const status = await dockerManager.getAppStatus(appId);
+
+    // Update cache with new status
+    cache.setAppStatus(appId, status);
 
     res.json({
       message: `Application ${app.name || appId} started`,
@@ -98,6 +121,10 @@ async function stopApp(req, res) {
     await dockerManager.stopApp(appId);
 
     logger.info(`Application stopped successfully: ${appId}`);
+
+    // Invalidate and update cache
+    cache.invalidateAppStatus(appId);
+    cache.setAppStatus(appId, { status: 'stopped', containers: [] });
 
     res.json({
       message: `Application ${appId} stopped`,
