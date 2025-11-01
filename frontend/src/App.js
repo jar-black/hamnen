@@ -7,6 +7,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('');
+  const [showRunningOnly, setShowRunningOnly] = useState(false);
 
   useEffect(() => {
     loadApps();
@@ -70,11 +71,17 @@ function App() {
     }
   };
 
-  const filteredApps = apps.filter(app =>
-    app.name.toLowerCase().includes(filter.toLowerCase()) ||
-    app.description.toLowerCase().includes(filter.toLowerCase()) ||
-    (app.tags && app.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())))
-  );
+  const filteredApps = apps.filter(app => {
+    // Text search filter
+    const matchesSearch = app.name.toLowerCase().includes(filter.toLowerCase()) ||
+      app.description.toLowerCase().includes(filter.toLowerCase()) ||
+      (app.tags && app.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
+
+    // Running status filter
+    const matchesRunningFilter = !showRunningOnly || app.status === 'running';
+
+    return matchesSearch && matchesRunningFilter;
+  });
 
   // Group apps by category
   const appsByCategory = filteredApps.reduce((acc, app) => {
@@ -120,6 +127,14 @@ function App() {
           onChange={(e) => setFilter(e.target.value)}
           className="search-input"
         />
+        <label className="checkbox-filter">
+          <input
+            type="checkbox"
+            checked={showRunningOnly}
+            onChange={(e) => setShowRunningOnly(e.target.checked)}
+          />
+          <span>Running applications only</span>
+        </label>
       </div>
 
       {error && (
