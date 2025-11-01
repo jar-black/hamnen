@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  memos:
+    image: neosmemo/memos:latest
+    container_name: hamnen_memos
+    restart: unless-stopped
+    ports:
+      - "5230:5230"
+    volumes:
+      - ./volumes/data:/var/opt/memos
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

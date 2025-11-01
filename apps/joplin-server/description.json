@@ -1,0 +1,9 @@
+{
+  "name": "Joplin Server",
+  "description": "Sync server for Joplin note taking and to-do application",
+  "icon": "📔",
+  "port": 22300,
+  "path": "/",
+  "healthCheck": "http://localhost:22300",
+  "tags": ["notes", "sync", "productivity", "joplin"]
+}

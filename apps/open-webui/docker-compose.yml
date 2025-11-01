@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: hamnen_open_webui
+    restart: unless-stopped
+    ports:
+      - "8128:8080"
+    volumes:
+      - ./volumes/data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

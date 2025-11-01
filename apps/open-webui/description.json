@@ -1,0 +1,9 @@
+{
+  "name": "Open WebUI",
+  "description": "User-friendly WebUI for LLMs (formerly Ollama WebUI)",
+  "icon": "🤖",
+  "port": 8128,
+  "path": "/",
+  "healthCheck": "http://localhost:8128",
+  "tags": ["ai", "llm", "webui", "chat"]
+}

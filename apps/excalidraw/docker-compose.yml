@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  excalidraw:
+    image: excalidraw/excalidraw:latest
+    container_name: hamnen_excalidraw
+    restart: unless-stopped
+    ports:
+      - "8125:80"
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

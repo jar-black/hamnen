@@ -1,0 +1,9 @@
+{
+  "name": "n8n",
+  "description": "Workflow automation tool with visual editor for complex integrations",
+  "icon": "⚙️",
+  "port": 5678,
+  "path": "/",
+  "healthCheck": "http://localhost:5678",
+  "tags": ["automation", "workflow", "integration", "no-code"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "LocalAI",
+  "description": "OpenAI alternative - self-hosted, community-driven AI API",
+  "icon": "🧠",
+  "port": 8129,
+  "path": "/",
+  "healthCheck": "http://localhost:8129",
+  "tags": ["ai", "api", "llm", "openai"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Stirling PDF",
+  "description": "Locally hosted web application for PDF manipulation and operations",
+  "icon": "📄",
+  "port": 8126,
+  "path": "/",
+  "healthCheck": "http://localhost:8126",
+  "tags": ["pdf", "tools", "productivity", "documents"]
+}

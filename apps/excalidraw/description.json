@@ -1,0 +1,9 @@
+{
+  "name": "Excalidraw",
+  "description": "Virtual collaborative whiteboard tool for sketching hand-drawn diagrams",
+  "icon": "✏️",
+  "port": 8125,
+  "path": "/",
+  "healthCheck": "http://localhost:8125",
+  "tags": ["whiteboard", "collaboration", "diagrams", "productivity"]
+}

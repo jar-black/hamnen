@@ -1,0 +1,9 @@
+{
+  "name": "Paperless-ngx",
+  "description": "Document management system with OCR and full-text search",
+  "icon": "🗂️",
+  "port": 8127,
+  "path": "/",
+  "healthCheck": "http://localhost:8127",
+  "tags": ["documents", "ocr", "management", "productivity"]
+}

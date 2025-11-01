@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  localai:
+    image: quay.io/go-skynet/local-ai:latest
+    container_name: hamnen_localai
+    restart: unless-stopped
+    ports:
+      - "8129:8080"
+    volumes:
+      - ./volumes/models:/models
+    environment:
+      - THREADS=4
+      - CONTEXT_SIZE=512
+
+networks:
+  default:
+    name: hamnen-network
+    external: true
