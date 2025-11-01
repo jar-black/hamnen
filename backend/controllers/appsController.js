@@ -31,18 +31,18 @@ async function listApps(req, res) {
  */
 async function getApp(req, res) {
   try {
-    // Support both "name" and "category/name" format
-    const appId = req.params[0] || req.params.name;
+    // Use validated app ID from middleware
+    const appId = req.validatedAppId;
     const app = await appLoader.findAppById(appId);
 
     if (!app) {
-      return res.status(404).json({ error: 'Application not found' });
+      return res.status(404).json({ error: 'Application not found', code: 'APP_NOT_FOUND' });
     }
 
     const status = await dockerManager.getAppStatus(appId);
     res.json({ ...app, ...status });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
 
@@ -51,13 +51,13 @@ async function getApp(req, res) {
  */
 async function startApp(req, res) {
   try {
-    // Support both "name" and "category/name" format
-    const appId = req.params[0] || req.params.name;
+    // Use validated app ID from middleware
+    const appId = req.validatedAppId;
 
     // Check if app exists
     const app = await appLoader.findAppById(appId);
     if (!app) {
-      return res.status(404).json({ error: 'Application not found' });
+      return res.status(404).json({ error: 'Application not found', code: 'APP_NOT_FOUND' });
     }
 
     // Start the application
@@ -73,7 +73,7 @@ async function startApp(req, res) {
       url: `http://localhost:${app.port}${app.path || '/'}`
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
 
@@ -82,8 +82,8 @@ async function startApp(req, res) {
  */
 async function stopApp(req, res) {
   try {
-    // Support both "name" and "category/name" format
-    const appId = req.params[0] || req.params.name;
+    // Use validated app ID from middleware
+    const appId = req.validatedAppId;
 
     await dockerManager.stopApp(appId);
 
@@ -92,7 +92,7 @@ async function stopApp(req, res) {
       status: 'stopped'
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
 
@@ -101,15 +101,15 @@ async function stopApp(req, res) {
  */
 async function getAppLogs(req, res) {
   try {
-    // Support both "name" and "category/name" format
-    const appId = req.params[0] || req.params.name;
-    const lines = req.query.lines || 100;
+    // Use validated app ID and lines from middleware
+    const appId = req.validatedAppId;
+    const lines = req.validatedLines || 100;
 
     const logs = await dockerManager.getAppLogs(appId, lines);
 
     res.json({ logs });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
 
