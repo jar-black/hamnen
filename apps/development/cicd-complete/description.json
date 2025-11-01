@@ -1,0 +1,9 @@
+{
+  "name": "Complete CI/CD Environment",
+  "description": "Comprehensive DevOps platform with GitLab, Jenkins, Harbor, Nexus, SonarQube, and Selenium Grid - all integrated on one network",
+  "icon": "🚀",
+  "port": 8180,
+  "path": "/",
+  "healthCheck": "http://localhost:8180/-/health",
+  "tags": ["ci-cd", "devops", "gitlab", "jenkins", "docker-registry", "testing", "development", "complete-stack"]
+}

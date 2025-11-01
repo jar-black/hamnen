@@ -1,0 +1,274 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database - Shared by GitLab and SonarQube
+  postgresql:
+    image: postgres:15-alpine
+    container_name: hamnen_cicd_postgresql
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=cicd_user
+      - POSTGRES_PASSWORD=cicd_password
+      - POSTGRES_DB=gitlab
+      - POSTGRES_MULTIPLE_DATABASES=sonarqube
+    volumes:
+      - ./volumes/postgresql:/var/lib/postgresql/data
+    networks:
+      - cicd-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cicd_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis - Cache for GitLab
+  redis:
+    image: redis:7-alpine
+    container_name: hamnen_cicd_redis
+    restart: unless-stopped
+    volumes:
+      - ./volumes/redis:/data
+    networks:
+      - cicd-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # GitLab - Complete DevOps Platform
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: hamnen_cicd_gitlab
+    restart: unless-stopped
+    hostname: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8180'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+        gitlab_rails['db_adapter'] = 'postgresql'
+        gitlab_rails['db_database'] = 'gitlab'
+        gitlab_rails['db_host'] = 'postgresql'
+        gitlab_rails['db_port'] = 5432
+        gitlab_rails['db_username'] = 'cicd_user'
+        gitlab_rails['db_password'] = 'cicd_password'
+        gitlab_rails['redis_host'] = 'redis'
+        gitlab_rails['redis_port'] = 6379
+        gitlab_rails['initial_root_password'] = 'cicd_admin_password'
+        nginx['listen_port'] = 80
+        prometheus_monitoring['enable'] = false
+        gitlab_rails['gitlab_default_projects_features_container_registry'] = true
+    ports:
+      - "8180:80"
+      - "2222:22"
+    volumes:
+      - ./volumes/gitlab/config:/etc/gitlab
+      - ./volumes/gitlab/logs:/var/log/gitlab
+      - ./volumes/gitlab/data:/var/opt/gitlab
+    networks:
+      - cicd-network
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/-/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    shm_size: '256m'
+
+  # GitLab Runner - CI/CD Job Executor
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    container_name: hamnen_cicd_gitlab_runner
+    restart: unless-stopped
+    volumes:
+      - ./volumes/gitlab-runner:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - cicd-network
+    depends_on:
+      - gitlab
+
+  # Jenkins - CI/CD Automation Server
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: hamnen_cicd_jenkins
+    restart: unless-stopped
+    user: root
+    ports:
+      - "8181:8080"
+      - "50001:50000"
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false -Dhudson.model.DirectoryBrowserSupport.CSP=
+      - JENKINS_OPTS=--httpPort=8080
+    volumes:
+      - ./volumes/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - cicd-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/login || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Harbor - Container Registry with Security Scanning
+  harbor-core:
+    image: goharbor/harbor-core:v2.10.0
+    container_name: hamnen_cicd_harbor_core
+    restart: unless-stopped
+    environment:
+      - CORE_SECRET=cicd_harbor_secret
+      - JOBSERVICE_SECRET=cicd_jobservice_secret
+    volumes:
+      - ./volumes/harbor/core:/data
+    networks:
+      - cicd-network
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  harbor-portal:
+    image: goharbor/harbor-portal:v2.10.0
+    container_name: hamnen_cicd_harbor_portal
+    restart: unless-stopped
+    networks:
+      - cicd-network
+
+  harbor-registry:
+    image: goharbor/registry-photon:v2.10.0
+    container_name: hamnen_cicd_harbor_registry
+    restart: unless-stopped
+    volumes:
+      - ./volumes/harbor/registry:/storage
+    networks:
+      - cicd-network
+
+  harbor-proxy:
+    image: goharbor/nginx-photon:v2.10.0
+    container_name: hamnen_cicd_harbor_proxy
+    restart: unless-stopped
+    ports:
+      - "8182:8080"
+    networks:
+      - cicd-network
+    depends_on:
+      - harbor-core
+      - harbor-portal
+      - harbor-registry
+
+  # Nexus Repository - Artifact Manager
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: hamnen_cicd_nexus
+    restart: unless-stopped
+    ports:
+      - "8184:8081"
+      - "8185:8082"
+    environment:
+      - INSTALL4J_ADD_VM_PARAMS=-Xms1024m -Xmx1024m -XX:MaxDirectMemorySize=1024m
+    volumes:
+      - ./volumes/nexus:/nexus-data
+    networks:
+      - cicd-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8081/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  # SonarQube - Code Quality Analysis
+  sonarqube:
+    image: sonarqube:community
+    container_name: hamnen_cicd_sonarqube
+    restart: unless-stopped
+    ports:
+      - "8186:9000"
+    environment:
+      - SONAR_JDBC_URL=jdbc:postgresql://postgresql:5432/sonarqube
+      - SONAR_JDBC_USERNAME=cicd_user
+      - SONAR_JDBC_PASSWORD=cicd_password
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    volumes:
+      - ./volumes/sonarqube/data:/opt/sonarqube/data
+      - ./volumes/sonarqube/logs:/opt/sonarqube/logs
+      - ./volumes/sonarqube/extensions:/opt/sonarqube/extensions
+    networks:
+      - cicd-network
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:9000/api/system/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  # Selenium Grid Hub - Test Automation
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: hamnen_cicd_selenium_hub
+    restart: unless-stopped
+    ports:
+      - "8187:4444"
+      - "8188:4442"
+      - "8189:4443"
+    environment:
+      - SE_SESSION_REQUEST_TIMEOUT=300
+      - SE_NODE_SESSION_TIMEOUT=300
+      - SE_SESSION_RETRY_INTERVAL=5
+    networks:
+      - cicd-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4444/wd/hub/status || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  # Selenium Chrome Node
+  selenium-chrome:
+    image: selenium/node-chrome:latest
+    container_name: hamnen_cicd_selenium_chrome
+    restart: unless-stopped
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=3
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - cicd-network
+    depends_on:
+      - selenium-hub
+
+  # Selenium Firefox Node
+  selenium-firefox:
+    image: selenium/node-firefox:latest
+    container_name: hamnen_cicd_selenium_firefox
+    restart: unless-stopped
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=3
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - cicd-network
+    depends_on:
+      - selenium-hub
+
+networks:
+  cicd-network:
+    name: hamnen_cicd_network
+    driver: bridge
