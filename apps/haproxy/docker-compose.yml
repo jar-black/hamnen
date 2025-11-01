@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  haproxy:
+    image: haproxy:latest
+    container_name: hamnen_haproxy
+    restart: unless-stopped
+    ports:
+      - "8404:8404"
+      - "8089:80"
+      - "8090:443"
+    volumes:
+      - ./volumes/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

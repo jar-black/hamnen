@@ -1,0 +1,9 @@
+{
+  "name": "Caddy",
+  "description": "Fast, multi-platform web server with automatic HTTPS",
+  "icon": "⚡",
+  "port": 2019,
+  "path": "/",
+  "healthCheck": "http://localhost:2019",
+  "tags": ["web-server", "https", "reverse-proxy"]
+}

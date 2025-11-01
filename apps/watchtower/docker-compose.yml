@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: hamnen_watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_POLL_INTERVAL=86400
+      - WATCHTOWER_HTTP_API_TOKEN=hamnen-watchtower-token
+      - WATCHTOWER_HTTP_API_UPDATE=true
+    ports:
+      - "8080:8080"
+    command: --http-api-update
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

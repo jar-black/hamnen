@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  caddy:
+    image: caddy:latest
+    container_name: hamnen_caddy
+    restart: unless-stopped
+    ports:
+      - "2019:2019"
+      - "8087:80"
+      - "8088:443"
+    volumes:
+      - ./volumes/data:/data
+      - ./volumes/config:/config
+      - ./volumes/Caddyfile:/etc/caddy/Caddyfile
+    environment:
+      - CADDY_ADMIN=:2019
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

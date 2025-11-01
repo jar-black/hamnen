@@ -1,0 +1,9 @@
+{
+  "name": "HAProxy",
+  "description": "Reliable, high performance TCP/HTTP load balancer",
+  "icon": "⚖️",
+  "port": 8404,
+  "path": "/",
+  "healthCheck": "http://localhost:8404/stats",
+  "tags": ["load-balancer", "proxy", "tcp", "http"]
+}

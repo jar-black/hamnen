@@ -1,0 +1,9 @@
+{
+  "name": "Watchtower",
+  "description": "Automatically update running Docker containers to the latest available image",
+  "icon": "🔄",
+  "port": 8080,
+  "path": "/",
+  "healthCheck": "http://localhost:8080/v1/update",
+  "tags": ["docker", "automation", "updates", "monitoring"]
+}

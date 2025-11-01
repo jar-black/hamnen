@@ -1,0 +1,9 @@
+{
+  "name": "Traefik",
+  "description": "Modern HTTP reverse proxy and load balancer with automatic HTTPS",
+  "icon": "🚦",
+  "port": 8084,
+  "path": "/",
+  "healthCheck": "http://localhost:8084",
+  "tags": ["proxy", "reverse-proxy", "load-balancer", "ssl"]
+}

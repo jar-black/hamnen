@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  diun:
+    image: crazymax/diun:latest
+    container_name: hamnen_diun
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./volumes/data:/data
+    environment:
+      - TZ=UTC
+      - LOG_LEVEL=info
+      - DIUN_WATCH_WORKERS=20
+      - DIUN_WATCH_SCHEDULE=0 */6 * * *
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

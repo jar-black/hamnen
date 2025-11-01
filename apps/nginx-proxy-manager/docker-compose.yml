@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: hamnen_nginx_proxy_manager
+    restart: unless-stopped
+    ports:
+      - "81:81"
+      - "8082:80"
+      - "8083:443"
+    volumes:
+      - ./volumes/data:/data
+      - ./volumes/letsencrypt:/etc/letsencrypt
+    environment:
+      - DB_SQLITE_FILE=/data/database.sqlite
+
+networks:
+  default:
+    name: hamnen-network
+    external: true
