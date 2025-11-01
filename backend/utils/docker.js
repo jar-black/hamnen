@@ -7,24 +7,28 @@ const execAsync = promisify(exec);
 
 class DockerManager {
   constructor() {
-    this.appsDir = path.join(__dirname, '../apps');
+    // Support both local development and Docker deployment
+    this.appsDir = process.env.APPS_DIR || path.join(__dirname, '../../apps');
   }
 
   /**
    * Execute docker-compose command
+   * @param {string} appId - App ID which can be "appname" or "category/appname"
    */
-  async executeDockerCompose(appName, command, options = {}) {
-    const appPath = path.join(this.appsDir, appName);
+  async executeDockerCompose(appId, command, options = {}) {
+    const appPath = path.join(this.appsDir, appId);
     const composeFile = path.join(appPath, 'docker-compose.yml');
 
     // Check if docker-compose file exists
     try {
       await fs.access(composeFile);
     } catch (error) {
-      throw new Error(`docker-compose.yml not found for ${appName}`);
+      throw new Error(`docker-compose.yml not found for ${appId}`);
     }
 
-    const cmd = `docker-compose -f ${composeFile} -p hamnen_${appName} ${command}`;
+    // Use sanitized app name for project (replace / with -)
+    const projectName = `hamnen_${appId.replace(/\//g, '-')}`;
+    const cmd = `docker-compose -f ${composeFile} -p ${projectName} ${command}`;
 
     try {
       const { stdout, stderr } = await execAsync(cmd, {
