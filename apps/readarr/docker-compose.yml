@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: hamnen_readarr
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    volumes:
+      - ./volumes/config:/config
+      - ./volumes/books:/books
+      - ./volumes/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

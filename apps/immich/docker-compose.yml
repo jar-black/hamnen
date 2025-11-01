@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  immich-server:
+    image: ghcr.io/immich-app/immich-server:release
+    container_name: hamnen_immich
+    restart: unless-stopped
+    ports:
+      - "2283:3001"
+    volumes:
+      - ./volumes/upload:/usr/src/app/upload
+    environment:
+      - DB_HOSTNAME=immich_postgres
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_DATABASE_NAME=immich
+      - REDIS_HOSTNAME=immich_redis
+    depends_on:
+      - redis
+      - database
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: hamnen_immich_redis
+    restart: unless-stopped
+
+  database:
+    image: postgres:14-alpine
+    container_name: hamnen_immich_postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=immich
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+
+networks:
+  default:
+    name: hamnen-network
+    external: true

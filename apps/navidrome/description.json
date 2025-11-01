@@ -1,0 +1,9 @@
+{
+  "name": "Navidrome",
+  "description": "Modern Music Server and Streamer compatible with Subsonic/Airsonic",
+  "icon": "🎶",
+  "port": 4533,
+  "path": "/",
+  "healthCheck": "http://localhost:4533",
+  "tags": ["music", "streaming", "subsonic", "media"]
+}

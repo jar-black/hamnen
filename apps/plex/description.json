@@ -1,0 +1,9 @@
+{
+  "name": "Plex",
+  "description": "Stream your media to all of your devices from your own server",
+  "icon": "🎬",
+  "port": 32400,
+  "path": "/web",
+  "healthCheck": "http://localhost:32400/web",
+  "tags": ["media", "streaming", "plex", "movies", "tv"]
+}

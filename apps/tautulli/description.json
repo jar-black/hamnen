@@ -1,0 +1,9 @@
+{
+  "name": "Tautulli",
+  "description": "Monitoring and tracking tool for Plex Media Server",
+  "icon": "📊",
+  "port": 8181,
+  "path": "/",
+  "healthCheck": "http://localhost:8181",
+  "tags": ["media", "monitoring", "plex", "analytics"]
+}

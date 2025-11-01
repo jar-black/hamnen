@@ -1,0 +1,9 @@
+{
+  "name": "Radarr",
+  "description": "Movie collection manager for Usenet and BitTorrent users",
+  "icon": "🎬",
+  "port": 7878,
+  "path": "/",
+  "healthCheck": "http://localhost:7878",
+  "tags": ["media", "automation", "movies", "pvr"]
+}

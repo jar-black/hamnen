@@ -1,0 +1,9 @@
+{
+  "name": "Emby",
+  "description": "Personal media server with apps on just about every device",
+  "icon": "🎥",
+  "port": 8097,
+  "path": "/",
+  "healthCheck": "http://localhost:8097",
+  "tags": ["media", "streaming", "movies", "tv"]
+}

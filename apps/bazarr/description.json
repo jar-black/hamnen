@@ -1,0 +1,9 @@
+{
+  "name": "Bazarr",
+  "description": "Companion application to Sonarr and Radarr for downloading subtitles",
+  "icon": "💬",
+  "port": 6767,
+  "path": "/",
+  "healthCheck": "http://localhost:6767",
+  "tags": ["media", "subtitles", "automation"]
+}
