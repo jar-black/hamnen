@@ -2,8 +2,8 @@
   "name": "Portainer",
   "description": "Docker management UI for managing containers, images, networks, and volumes",
   "icon": "🐳",
-  "port": 9000,
+  "port": 9001,
   "path": "/",
-  "healthCheck": "http://localhost:9000",
+  "healthCheck": "http://localhost:9001",
   "tags": ["management", "docker", "monitoring"]
 }

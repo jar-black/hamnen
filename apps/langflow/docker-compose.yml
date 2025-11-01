@@ -8,8 +8,9 @@ services:
     ports:
       - "7860:7860"
     volumes:
-      - ./volumes/langflow_data:/app/langflow
+      - ./volumes/langflow_data:/home/user/.cache/langflow
     environment:
-      - LANGFLOW_DATABASE_URL=sqlite:///app/langflow/langflow.db
       - LANGFLOW_AUTO_LOGIN=false
-    command: run --host 0.0.0.0 --port 7860
+      - LANGFLOW_SUPERUSER=admin
+      - LANGFLOW_SUPERUSER_PASSWORD=admin123
+    command: langflow run --host 0.0.0.0 --port 7860

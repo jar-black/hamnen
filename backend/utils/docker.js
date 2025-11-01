@@ -7,7 +7,7 @@ const execAsync = promisify(exec);
 
 class DockerManager {
   constructor() {
-    this.appsDir = path.join(__dirname, '../../apps');
+    this.appsDir = path.join(__dirname, '../apps');
   }
 
   /**

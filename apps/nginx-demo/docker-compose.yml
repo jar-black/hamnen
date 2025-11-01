@@ -8,4 +8,4 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./volumes/html:/usr/share/nginx/html:ro
+      - /home/johan/AI/hamnen/apps/nginx-demo/volumes/html:/usr/share/nginx/html:ro
