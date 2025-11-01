@@ -1,5 +1,6 @@
 const appLoader = require('../utils/appLoader');
 const dockerManager = require('../utils/docker');
+const logger = require('../utils/logger');
 
 /**
  * Get all available applications
@@ -50,18 +51,21 @@ async function getApp(req, res) {
  * Start an application
  */
 async function startApp(req, res) {
+  const appId = req.validatedAppId;
+
   try {
-    // Use validated app ID from middleware
-    const appId = req.validatedAppId;
+    logger.info(`Starting application: ${appId}`, { ip: req.ip });
 
     // Check if app exists
     const app = await appLoader.findAppById(appId);
     if (!app) {
+      logger.warn(`Application not found: ${appId}`, { ip: req.ip });
       return res.status(404).json({ error: 'Application not found', code: 'APP_NOT_FOUND' });
     }
 
     // Start the application
     await dockerManager.startApp(appId);
+    logger.info(`Application started successfully: ${appId}`, { appName: app.name });
 
     // Wait a moment and get status
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -73,6 +77,11 @@ async function startApp(req, res) {
       url: `http://localhost:${app.port}${app.path || '/'}`
     });
   } catch (error) {
+    logger.error(`Failed to start application: ${appId}`, {
+      error: error.message,
+      stack: error.stack,
+      ip: req.ip
+    });
     res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
@@ -81,17 +90,25 @@ async function startApp(req, res) {
  * Stop an application
  */
 async function stopApp(req, res) {
+  const appId = req.validatedAppId;
+
   try {
-    // Use validated app ID from middleware
-    const appId = req.validatedAppId;
+    logger.info(`Stopping application: ${appId}`, { ip: req.ip });
 
     await dockerManager.stopApp(appId);
+
+    logger.info(`Application stopped successfully: ${appId}`);
 
     res.json({
       message: `Application ${appId} stopped`,
       status: 'stopped'
     });
   } catch (error) {
+    logger.error(`Failed to stop application: ${appId}`, {
+      error: error.message,
+      stack: error.stack,
+      ip: req.ip
+    });
     res.status(500).json({ error: error.message, code: 'INTERNAL_ERROR' });
   }
 }
