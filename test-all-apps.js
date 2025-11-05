@@ -122,10 +122,10 @@ class TestRunner {
         id: appId,
         name: description.name || appName,
         category: category || 'uncategorized',
-        path: appPath,
         healthCheck: description.healthCheck,
         port: description.port,
-        ...description
+        ...description,
+        path: appPath  // Keep filesystem path, overriding description.path (web path)
       };
     } catch (error) {
       this.log(`Failed to load ${category}/${appName}: ${error.message}`, 'yellow');
