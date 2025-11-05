@@ -190,35 +190,39 @@ class TestRunner {
    * Get application status
    */
   async getAppStatus(app) {
-    const result = await this.executeDockerCompose(app, 'ps --format json');
+    // Use docker ps with label filter instead of docker-compose ps for more reliable results
+    // This avoids issues with project name mismatches when container_name is hardcoded
+    const projectName = `hamnen_${app.id.replace(/\//g, '-')}`;
+    const cmd = `docker ps -a --filter "label=com.docker.compose.project=${projectName}" --format "{{json .}}"`;
 
-    if (!result.success) {
-      return { running: false, containers: [] };
+    try {
+      const { stdout, stderr } = await execAsync(cmd);
+      const containers = stdout
+        .split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+          try {
+            return JSON.parse(line);
+          } catch {
+            return null;
+          }
+        })
+        .filter(Boolean);
+
+      const runningContainers = containers.filter(c => c.State === 'running');
+
+      return {
+        running: runningContainers.length > 0,
+        allRunning: containers.length > 0 && containers.every(c => c.State === 'running'),
+        containers: containers.map(c => ({
+          name: c.Names,
+          state: c.State,
+          status: c.Status
+        }))
+      };
+    } catch (error) {
+      return { running: false, containers: [], error: error.message };
     }
-
-    const containers = result.stdout
-      .split('\n')
-      .filter(line => line.trim())
-      .map(line => {
-        try {
-          return JSON.parse(line);
-        } catch {
-          return null;
-        }
-      })
-      .filter(Boolean);
-
-    const runningContainers = containers.filter(c => c.State === 'running');
-
-    return {
-      running: runningContainers.length > 0,
-      allRunning: containers.length > 0 && containers.every(c => c.State === 'running'),
-      containers: containers.map(c => ({
-        name: c.Name,
-        state: c.State,
-        status: c.Status
-      }))
-    };
   }
 
   /**
