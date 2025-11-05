@@ -60,8 +60,13 @@ class DockerManager {
    */
   async getAppStatus(appName) {
     try {
-      const result = await this.executeDockerCompose(appName, 'ps --format json');
-      const containers = result.stdout
+      // Use docker ps with label filter instead of docker-compose ps for more reliable results
+      // This avoids issues with project name mismatches when container_name is hardcoded
+      const projectName = `hamnen_${appName.replace(/\//g, '-')}`;
+      const cmd = `docker ps -a --filter "label=com.docker.compose.project=${projectName}" --format "{{json .}}"`;
+
+      const { stdout, stderr } = await execAsync(cmd);
+      const containers = stdout
         .split('\n')
         .filter(line => line.trim())
         .map(line => {
@@ -81,7 +86,7 @@ class DockerManager {
       return {
         status: allRunning ? 'running' : 'partial',
         containers: containers.map(c => ({
-          name: c.Name,
+          name: c.Names,
           state: c.State,
           status: c.Status
         }))
