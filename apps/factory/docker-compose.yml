@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  factory-ai:
+    build: .
+    container_name: hamnen_factory_ai
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./volumes:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - PROJECT_DIR=/workspace
+    restart: unless-stopped
+    networks:
+      - hamnen-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  hamnen-network:
+    driver: bridge

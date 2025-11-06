@@ -12,8 +12,9 @@ services:
       - /run/udev:/run/udev:ro
     environment:
       - TZ=UTC
-    devices:
-      - /dev/ttyACM0:/dev/ttyACM0
+    # devices:
+    #   - /dev/ttyACM0:/dev/ttyACM0
+    # Note: Device commented out for testing - requires physical Zigbee coordinator
 
 networks:
   default:

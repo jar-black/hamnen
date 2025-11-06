@@ -14,8 +14,7 @@ services:
     cap_add:
       - SYS_RAWIO
     devices:
-      - /dev/sda
-      - /dev/sdb
+      - /dev/nvme0n1
 
 networks:
   default:

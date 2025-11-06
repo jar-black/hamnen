@@ -1,0 +1,1754 @@
+[36mLoading applications...[0m
+[34m
+═══════════════════════════════════════════════════════════[0m
+[34m   Hamnen Application Launch Button Test Suite[0m
+[34m═══════════════════════════════════════════════════════════
+[0m
+[36mFound 113 applications to test
+[0m
+[36mConfiguration:[0m
+[90m  - Wait time: 60 seconds[0m
+[90m  - Health checks: enabled[0m
+[90m  - Apps directory: /home/johan/AI/hamnen/apps[0m
+[36m
+Testing: Langflow (ai/langflow)[0m
+[90mCategory: ai[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_langflow: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Langflow[0m
+[36m
+Testing: LocalAI (ai/localai)[0m
+[90mCategory: ai[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_localai: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: LocalAI[0m
+[36m
+Testing: Ollama (ai/ollama)[0m
+[90mCategory: ai[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_ollama: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Ollama[0m
+[36m
+Testing: Open WebUI (ai/open-webui)[0m
+[90mCategory: ai[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_open_webui: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Open WebUI[0m
+[36m
+Testing: Stable Diffusion WebUI (ai/stable-diffusion-webui)[0m
+[90mCategory: ai[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_stable_diffusion: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:7860
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Stable Diffusion WebUI - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:7860
+[0m
+[36m
+Testing: n8n (automation/n8n)[0m
+[90mCategory: automation[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:5678
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: n8n - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:5678
+[0m
+[36m
+Testing: Node-RED (automation/nodered)[0m
+[90mCategory: automation[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1880
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Node-RED - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1880
+[0m
+[36m
+Testing: Duplicati (backup/duplicati)[0m
+[90mCategory: backup[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_duplicati: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8200
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Duplicati - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8200
+[0m
+[36m
+Testing: Restic (backup/restic)[0m
+[90mCategory: backup[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8119
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Restic - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8119
+[0m
+[36m
+Testing: Dashy (dashboard/dashy)[0m
+[90mCategory: dashboard[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_dashy: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:4000
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Dashy - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:4000
+[0m
+[36m
+Testing: Heimdall (dashboard/heimdall)[0m
+[90mCategory: dashboard[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_heimdall: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Heimdall[0m
+[36m
+Testing: Homarr (dashboard/homarr)[0m
+[90mCategory: dashboard[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_homarr: running[0m
+[32m  ✓ Health check passed (HTTP 307)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Homarr[0m
+[36m
+Testing: Homepage (dashboard/homepage)[0m
+[90mCategory: dashboard[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_homepage: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3003
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Homepage - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3003
+[0m
+[36m
+Testing: Organizr (dashboard/organizr)[0m
+[90mCategory: dashboard[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_organizr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Organizr[0m
+[36m
+Testing: CouchDB (database/couchdb)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_couchdb: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: CouchDB[0m
+[36m
+Testing: Elasticsearch (database/elasticsearch)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_elasticsearch: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9200
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Elasticsearch - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9200
+[0m
+[36m
+Testing: InfluxDB (database/influxdb)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_influxdb: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: InfluxDB[0m
+[36m
+Testing: MariaDB (database/mariadb)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_mariadb: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3307
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: MariaDB - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3307
+[0m
+[36m
+Testing: MongoDB (database/mongodb)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_mongodb: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:27017
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: MongoDB - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:27017
+[0m
+[36m
+Testing: MySQL (database/mysql)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_mysql: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3306
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: MySQL - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3306
+[0m
+[36m
+Testing: PostgreSQL (database/postgresql)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:5432
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: PostgreSQL - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:5432
+[0m
+[36m
+Testing: Redis (database/redis)[0m
+[90mCategory: database[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_redis: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:6379
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Redis - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:6379
+[0m
+[36m
+Testing: Complete CI/CD Environment (development/cicd-complete)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Complete CI/CD Environment - Failed to start: Creating hamnen_cicd_postgresql ... 
+Creating hamnen_cicd_nexus      ... 
+Creating hamnen_cicd_harbor_portal ... 
+Creating hamnen_cicd_selenium_hub  ... 
+Creating hamnen_cicd_jenkins       ... 
+Creating hamnen_cicd_redis         ... 
+Creating hamnen_cicd_harbor_registry ... 
+Creating hamnen_cicd_nexus           ... error
+
+ERROR: for hamnen_cicd_nexus  Cannot create container for service nexus: Conflict. The container name "/hamnen_cicd_nexus" is already in use by container "7a8671cb3e7d67dc57f468133e4438b2b175f95476f437acf0dd9dde230b4fbe". You have to remove (or rename) that container to be able to reuse that name.
+Creating hamnen_cicd_harbor_portal   ... error
+Creating hamnen_cicd_harbor_registry ... error
+
+ERROR: for hamnen_cicd_harbor_portal  Cannot create container for service harbor-portal: Conflict. The container name "/hamnen_cicd_harbor_portal" is already in use by container "094f8461c1c6f2e0d0f3002543c68134e8f6144a9927d317837efbc431925128". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for hamnen_cicd_harbor_registry  Cannot create container for service harbor-registry: Conflict. The container name "/hamnen_cicd_harbor_registry" is already in use by container "1c86e51738086b42207dc0eb3019f326f2d148294551158f94d9dfd62798dcd0". You have to remove (or rename) that container to be able to reuse that name.
+Creating hamnen_cicd_postgresql      ... done
+Creating hamnen_cicd_jenkins         ... done
+Creating hamnen_cicd_redis           ... done
+Creating hamnen_cicd_selenium_hub    ... done
+Creating hamnen_cicd_selenium_chrome ... 
+Creating hamnen_cicd_selenium_firefox ... 
+Creating hamnen_cicd_selenium_chrome  ... done
+Creating hamnen_cicd_selenium_firefox ... done
+Creating hamnen_cicd_sonarqube        ... 
+Creating hamnen_cicd_harbor_core      ... 
+Creating hamnen_cicd_harbor_core      ... error
+
+ERROR: for hamnen_cicd_harbor_core  Cannot create container for service harbor-core: Conflict. The container name "/hamnen_cicd_harbor_core" is already in use by container "f6511bebd86b3e4647b81f6296798961c855402faf5a4d9fce93dbd78efacdad". You have to remove (or rename) that container to be able to reuse that name.
+Creating hamnen_cicd_gitlab           ... 
+Creating hamnen_cicd_sonarqube        ... done
+Creating hamnen_cicd_gitlab           ... done
+Creating hamnen_cicd_gitlab_runner    ... 
+Creating hamnen_cicd_gitlab_runner    ... done
+
+ERROR: for nexus  Cannot create container for service nexus: Conflict. The container name "/hamnen_cicd_nexus" is already in use by container "7a8671cb3e7d67dc57f468133e4438b2b175f95476f437acf0dd9dde230b4fbe". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for harbor-portal  Cannot create container for service harbor-portal: Conflict. The container name "/hamnen_cicd_harbor_portal" is already in use by container "094f8461c1c6f2e0d0f3002543c68134e8f6144a9927d317837efbc431925128". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for harbor-registry  Cannot create container for service harbor-registry: Conflict. The container name "/hamnen_cicd_harbor_registry" is already in use by container "1c86e51738086b42207dc0eb3019f326f2d148294551158f94d9dfd62798dcd0". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for harbor-core  Cannot create container for service harbor-core: Conflict. The container name "/hamnen_cicd_harbor_core" is already in use by container "f6511bebd86b3e4647b81f6296798961c855402faf5a4d9fce93dbd78efacdad". You have to remove (or rename) that container to be able to reuse that name.
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Code Server (development/code-server)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_code_server: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Code Server[0m
+[36m
+Testing: Docker Registry (development/docker-registry)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_docker_registry_ui: running[0m
+[90m    - hamnen_docker_registry: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Docker Registry[0m
+[36m
+Testing: Drone (development/drone)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_drone: running[0m
+[32m  ✓ Health check passed (HTTP 303)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Drone[0m
+[36m
+Testing: Gitea (development/gitea)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_gitea: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Gitea[0m
+[36m
+Testing: GitLab (development/gitlab)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: GitLab - Failed to start: Recreating hamnen_gitlab ... 
+[141482] Failed to execute script docker-compose
+
+ERROR: for hamnen_gitlab  'ContainerConfig'
+
+ERROR: for gitlab  'ContainerConfig'
+Traceback (most recent call last):
+  File "docker-compose", line 3, in <module>
+  File "compose/cli/main.py", line 81, in main
+  File "compose/cli/main.py", line 203, in perform_command
+  File "compose/metrics/decorator.py", line 18, in wrapper
+  File "compose/cli/main.py", line 1186, in up
+  File "compose/cli/main.py", line 1182, in up
+  File "compose/project.py", line 702, in up
+  File "compose/parallel.py", line 108, in parallel_execute
+  File "compose/parallel.py", line 206, in producer
+  File "compose/project.py", line 688, in do
+  File "compose/service.py", line 581, in execute_convergence_plan
+  File "compose/service.py", line 503, in _execute_convergence_recreate
+  File "compose/parallel.py", line 108, in parallel_execute
+  File "compose/parallel.py", line 206, in producer
+  File "compose/service.py", line 496, in recreate
+  File "compose/service.py", line 615, in recreate_container
+  File "compose/service.py", line 334, in create_container
+  File "compose/service.py", line 922, in _get_container_create_options
+  File "compose/service.py", line 962, in _build_container_volume_options
+  File "compose/service.py", line 1549, in merge_volume_bindings
+  File "compose/service.py", line 1579, in get_container_data_volumes
+KeyError: 'ContainerConfig'
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Harbor (development/harbor)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8090
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Harbor - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8090
+[0m
+[36m
+Testing: Jenkins (development/jenkins)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8121
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Jenkins - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8121
+[0m
+[36m
+Testing: JupyterLab (development/jupyterlab)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_jupyterlab: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: JupyterLab[0m
+[36m
+Testing: Nexus Repository (development/nexus)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8081
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Nexus Repository - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8081
+[0m
+[36m
+Testing: Selenium Grid (development/selenium-grid)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 4[0m
+[90m    - hamnen_selenium_chrome: running[0m
+[90m    - hamnen_selenium_firefox: running[0m
+[90m    - hamnen_selenium_edge: running[0m
+[90m    - hamnen_selenium_hub: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Selenium Grid[0m
+[36m
+Testing: Ansible Semaphore (development/semaphore)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3006
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Ansible Semaphore - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3006
+[0m
+[36m
+Testing: SonarQube (development/sonarqube)[0m
+[90mCategory: development[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_sonarqube: restarting[0m
+[90m    - hamnen_sonarqube_db: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9002
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: SonarQube - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9002
+[0m
+[36m
+Testing: Diun (docker/diun)[0m
+[90mCategory: docker[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8081/health
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Diun - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8081/health
+[0m
+[36m
+Testing: Dockge (docker/dockge)[0m
+[90mCategory: docker[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_dockge: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Dockge[0m
+[36m
+Testing: Dozzle (docker/dozzle)[0m
+[90mCategory: docker[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_dozzle: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Dozzle[0m
+[36m
+Testing: Portainer (docker/portainer)[0m
+[90mCategory: docker[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_portainer: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Portainer[0m
+[36m
+Testing: Watchtower (docker/watchtower)[0m
+[90mCategory: docker[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_watchtower: running[0m
+[31m  ✗ Health check failed: 401[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Watchtower - Health check failed: 401[0m
+[36m
+Testing: Yacht (docker/yacht)[0m
+[90mCategory: docker[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_yacht: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Yacht[0m
+[36m
+Testing: Deluge (download/deluge)[0m
+[90mCategory: download[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_deluge: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Deluge[0m
+[36m
+Testing: Jackett (download/jackett)[0m
+[90mCategory: download[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_jackett: running[0m
+[32m  ✓ Health check passed (HTTP 301)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Jackett[0m
+[36m
+Testing: NZBGet (download/nzbget)[0m
+[90mCategory: download[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_nzbget: running[0m
+[31m  ✗ Health check failed: 401[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: NZBGet - Health check failed: 401[0m
+[36m
+Testing: qBittorrent (download/qbittorrent)[0m
+[90mCategory: download[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_qbittorrent: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8080
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: qBittorrent - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8080
+[0m
+[36m
+Testing: SABnzbd (download/sabnzbd)[0m
+[90mCategory: download[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_sabnzbd: running[0m
+[32m  ✓ Health check passed (HTTP 303)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: SABnzbd[0m
+[36m
+Testing: Transmission (download/transmission)[0m
+[90mCategory: download[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_transmission: running[0m
+[32m  ✓ Health check passed (HTTP 301)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Transmission[0m
+[36m
+Testing: Factory AI (factory)[0m
+[90mCategory: uncategorized[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_factory_ai: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Factory AI[0m
+[36m
+Testing: FileBrowser (files/filebrowser)[0m
+[90mCategory: files[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_filebrowser: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: FileBrowser[0m
+[36m
+Testing: FileRun (files/filerun)[0m
+[90mCategory: files[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: FileRun - Failed to start: Pulling filerun (filerun/filerun:latest)...
+manifest for filerun/filerun:latest not found: manifest unknown: manifest unknown
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Nextcloud (files/nextcloud)[0m
+[90mCategory: files[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_nextcloud: running[0m
+[90m    - hamnen_nextcloud_db: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Nextcloud[0m
+[36m
+Testing: Seafile (files/seafile)[0m
+[90mCategory: files[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_seafile: running[0m
+[90m    - hamnen_seafile_db: running[0m
+[31m  ✗ Health check failed: 502[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Seafile - Health check failed: 502[0m
+[36m
+Testing: Syncthing (files/syncthing)[0m
+[90mCategory: files[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_syncthing: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Syncthing[0m
+[36m
+Testing: Airsonic (media/airsonic)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_airsonic: running[0m
+[31m  ✗ Health check failed: 401[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Airsonic - Health check failed: 401[0m
+[36m
+Testing: Bazarr (media/bazarr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_bazarr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Bazarr[0m
+[36m
+Testing: Emby (media/emby)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_emby: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Emby[0m
+[36m
+Testing: Jellyfin (media/jellyfin)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_jellyfin: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Jellyfin[0m
+[36m
+Testing: Lidarr (media/lidarr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_lidarr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Lidarr[0m
+[36m
+Testing: Navidrome (media/navidrome)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_navidrome: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Navidrome[0m
+[36m
+Testing: Overseerr (media/overseerr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_overseerr: running[0m
+[32m  ✓ Health check passed (HTTP 307)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Overseerr[0m
+[36m
+Testing: Plex (media/plex)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_plex: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Plex[0m
+[36m
+Testing: Prowlarr (media/prowlarr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_prowlarr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Prowlarr[0m
+[36m
+Testing: Radarr (media/radarr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_radarr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Radarr[0m
+[36m
+Testing: Readarr (media/readarr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Readarr - Failed to start: Pulling readarr (lscr.io/linuxserver/readarr:develop)...
+no matching manifest for linux/amd64 in the manifest list entries
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Sonarr (media/sonarr)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_sonarr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Sonarr[0m
+[36m
+Testing: Tautulli (media/tautulli)[0m
+[90mCategory: media[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_tautulli: running[0m
+[32m  ✓ Health check passed (HTTP 303)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Tautulli[0m
+[36m
+Testing: LibreSpeed (misc/librespeed)[0m
+[90mCategory: misc[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_librespeed: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: LibreSpeed[0m
+[36m
+Testing: cAdvisor (monitoring/cadvisor)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_cadvisor: running[0m
+[32m  ✓ Health check passed (HTTP 307)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: cAdvisor[0m
+[36m
+Testing: Glances (monitoring/glances)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_glances: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Glances[0m
+[36m
+Testing: Grafana (monitoring/grafana)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_grafana: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Grafana[0m
+[36m
+Testing: Loki (monitoring/loki)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3100/ready
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Loki - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3100/ready
+[0m
+[36m
+Testing: Prometheus (monitoring/prometheus)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Prometheus - Failed to start: Pulling prometheus (prom/prometheus:latest)...
+Creating hamnen_prometheus ... 
+Creating hamnen_prometheus ... error
+
+ERROR: for hamnen_prometheus  Cannot start service prometheus: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/monitoring/prometheus/volumes/prometheus.yml" to rootfs at "/etc/prometheus/prometheus.yml": create mountpoint for /etc/prometheus/prometheus.yml mount: cannot create subdirectories in "/var/lib/docker/overlay2/5890632aa41a05231a48beec9d15162d4ead786b3f20b96444129485af712dc2/merged/etc/prometheus/prometheus.yml": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+ERROR: for prometheus  Cannot start service prometheus: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/monitoring/prometheus/volumes/prometheus.yml" to rootfs at "/etc/prometheus/prometheus.yml": create mountpoint for /etc/prometheus/prometheus.yml mount: cannot create subdirectories in "/var/lib/docker/overlay2/5890632aa41a05231a48beec9d15162d4ead786b3f20b96444129485af712dc2/merged/etc/prometheus/prometheus.yml": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Scrutiny (monitoring/scrutiny)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Scrutiny - Failed to start: Pulling scrutiny (ghcr.io/analogj/scrutiny:master-omnibus)...
+Creating hamnen_scrutiny ... 
+Creating hamnen_scrutiny ... error
+
+ERROR: for hamnen_scrutiny  Cannot start service scrutiny: error gathering device information while adding custom device "/dev/sda": no such file or directory
+
+ERROR: for scrutiny  Cannot start service scrutiny: error gathering device information while adding custom device "/dev/sda": no such file or directory
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Speedtest Tracker (monitoring/speedtest-tracker)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_speedtest_tracker: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8110
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Speedtest Tracker - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8110
+[0m
+[36m
+Testing: Statping (monitoring/statping)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_statping: running[0m
+[32m  ✓ Health check passed (HTTP 303)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Statping[0m
+[36m
+Testing: Uptime Kuma (monitoring/uptime-kuma)[0m
+[90mCategory: monitoring[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_uptime_kuma: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Uptime Kuma[0m
+[36m
+Testing: AdGuard Home (network/adguardhome)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: AdGuard Home - Failed to start: Pulling adguardhome (adguard/adguardhome:latest)...
+Creating hamnen_adguardhome ... 
+Host is already in use by another container
+Creating hamnen_adguardhome ... error
+
+ERROR: for hamnen_adguardhome  Cannot start service adguardhome: driver failed programming external connectivity on endpoint hamnen_adguardhome (b8f62d5aac47c367e3e0fdc3a9363df84ddd2ddff5f4362a4365ec92171562f3): Bind for 0.0.0.0:3000 failed: port is already allocated
+
+ERROR: for adguardhome  Cannot start service adguardhome: driver failed programming external connectivity on endpoint hamnen_adguardhome (b8f62d5aac47c367e3e0fdc3a9363df84ddd2ddff5f4362a4365ec92171562f3): Bind for 0.0.0.0:3000 failed: port is already allocated
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Caddy (network/caddy)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Caddy - Failed to start: Pulling caddy (caddy:latest)...
+Creating hamnen_caddy ... 
+Creating hamnen_caddy ... error
+
+ERROR: for hamnen_caddy  Cannot start service caddy: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/network/caddy/volumes/Caddyfile" to rootfs at "/etc/caddy/Caddyfile": create mountpoint for /etc/caddy/Caddyfile mount: cannot create subdirectories in "/var/lib/docker/overlay2/392522c858f1587ff5efb7d7edc0d7ece427ed41bda5b594a90f60af0dc23e5e/merged/etc/caddy/Caddyfile": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+ERROR: for caddy  Cannot start service caddy: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/network/caddy/volumes/Caddyfile" to rootfs at "/etc/caddy/Caddyfile": create mountpoint for /etc/caddy/Caddyfile mount: cannot create subdirectories in "/var/lib/docker/overlay2/392522c858f1587ff5efb7d7edc0d7ece427ed41bda5b594a90f60af0dc23e5e/merged/etc/caddy/Caddyfile": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Cloudflare Tunnel (network/cloudflared)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8106
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Cloudflare Tunnel - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8106
+[0m
+[36m
+Testing: FlareSolverr (network/flaresolverr)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_flaresolverr: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: FlareSolverr[0m
+[36m
+Testing: HAProxy (network/haproxy)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8404/stats
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: HAProxy - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8404/stats
+[0m
+[36m
+Testing: Nginx Proxy Manager (network/nginx-proxy-manager)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_nginx_proxy_manager: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Nginx Proxy Manager[0m
+[36m
+Testing: Pi-hole (network/pihole)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Pi-hole - Failed to start: Pulling pihole (pihole/pihole:latest)...
+Creating hamnen_pihole ... 
+Host is already in use by another container
+Creating hamnen_pihole ... error
+
+ERROR: for hamnen_pihole  Cannot start service pihole: driver failed programming external connectivity on endpoint hamnen_pihole (ab3225448893ae32981fad61e3c6cc5bcd0f28f19fd857bce9750b2b17039e57): failed to bind port 0.0.0.0:53/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:53: bind: address already in use
+
+ERROR: for pihole  Cannot start service pihole: driver failed programming external connectivity on endpoint hamnen_pihole (ab3225448893ae32981fad61e3c6cc5bcd0f28f19fd857bce9750b2b17039e57): failed to bind port 0.0.0.0:53/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:53: bind: address already in use
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Traefik (network/traefik)[0m
+[90mCategory: network[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_traefik: running[0m
+[32m  ✓ Health check passed (HTTP 301)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Traefik[0m
+[36m
+Testing: Immich (photos/immich)[0m
+[90mCategory: photos[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 3[0m
+[90m    - hamnen_immich: running[0m
+[90m    - hamnen_immich_redis: running[0m
+[90m    - hamnen_immich_postgres: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:2283
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Immich - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:2283
+[0m
+[36m
+Testing: PhotoPrism (photos/photoprism)[0m
+[90mCategory: photos[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_photoprism: running[0m
+[32m  ✓ Health check passed (HTTP 307)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: PhotoPrism[0m
+[36m
+Testing: Bookstack (productivity/bookstack)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_bookstack: running[0m
+[90m    - hamnen_bookstack_db: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8124
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Bookstack - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8124
+[0m
+[36m
+Testing: Excalidraw (productivity/excalidraw)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_excalidraw: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Excalidraw[0m
+[36m
+Testing: Joplin Server (productivity/joplin-server)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_joplin_server: running[0m
+[90m    - hamnen_joplin_db: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:22300
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Joplin Server - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:22300
+[0m
+[36m
+Testing: Mattermost (productivity/mattermost)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 2[0m
+[90m    - hamnen_mattermost: restarting[0m
+[90m    - hamnen_mattermost_db: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8065/api/v4/system/ping
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Mattermost - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8065/api/v4/system/ping
+[0m
+[36m
+Testing: Memos (productivity/memos)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_memos: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Memos[0m
+[36m
+Testing: Outline (productivity/outline)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 3[0m
+[90m    - hamnen_outline: running[0m
+[90m    - hamnen_outline_redis: running[0m
+[90m    - hamnen_outline_db: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3007
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Outline - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3007
+[0m
+[36m
+Testing: Paperless-ngx (productivity/paperless-ngx)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 3[0m
+[90m    - hamnen_paperless_ngx: running[0m
+[90m    - hamnen_paperless_redis: running[0m
+[90m    - hamnen_paperless_db: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8127
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Paperless-ngx - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8127
+[0m
+[36m
+Testing: Rocket.Chat (productivity/rocketchat)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Rocket.Chat - Failed to start: Creating network "hamnen_rocketchat_network" with the default driver
+Pulling mongodb (mongo:5.0)...
+Pulling rocketchat (registry.rocket.chat/rocketchat/rocket.chat:latest)...
+Creating hamnen_rocketchat_db ... 
+Creating hamnen_rocketchat_db ... done
+Creating hamnen_rocketchat    ... 
+Creating hamnen_rocketchat_mongo_init ... 
+Host is already in use by another container
+Creating hamnen_rocketchat            ... error
+
+ERROR: for hamnen_rocketchat  Cannot start service rocketchat: driver failed programming external connectivity on endpoint hamnen_rocketchat (1cbdb5612e22fee8cdceea36028c2ee1a2ec08d78aa3535df1bc493e0cb2a773): Bind for 0.0.0.0:3000 failed: port is already allocated
+Creating hamnen_rocketchat_mongo_init ... done
+
+ERROR: for rocketchat  Cannot start service rocketchat: driver failed programming external connectivity on endpoint hamnen_rocketchat (1cbdb5612e22fee8cdceea36028c2ee1a2ec08d78aa3535df1bc493e0cb2a773): Bind for 0.0.0.0:3000 failed: port is already allocated
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: Stirling PDF (productivity/stirling-pdf)[0m
+[90mCategory: productivity[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_stirling_pdf: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Stirling PDF[0m
+[36m
+Testing: Authelia (security/authelia)[0m
+[90mCategory: security[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9092
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Authelia - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9092
+[0m
+[36m
+Testing: Trivy (security/trivy)[0m
+[90mCategory: security[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_trivy: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Trivy[0m
+[36m
+Testing: HashiCorp Vault (security/vault)[0m
+[90mCategory: security[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_vault: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: HashiCorp Vault[0m
+[36m
+Testing: Vaultwarden (security/vaultwarden)[0m
+[90mCategory: security[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_vaultwarden: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Vaultwarden[0m
+[36m
+Testing: Domoticz (smart-home/domoticz)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_domoticz: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Domoticz[0m
+[36m
+Testing: ESPHome (smart-home/esphome)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_esphome: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: ESPHome[0m
+[36m
+Testing: Home Assistant (smart-home/homeassistant)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_homeassistant: running[0m
+[32m  ✓ Health check passed (HTTP 302)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Home Assistant[0m
+[36m
+Testing: Homebridge (smart-home/homebridge)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_homebridge: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Homebridge[0m
+[36m
+Testing: Mosquitto (smart-home/mosquitto)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1883
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Mosquitto - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1883
+[0m
+[36m
+Testing: openHAB (smart-home/openhab)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_openhab: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: openHAB[0m
+[36m
+Testing: Zigbee2MQTT (smart-home/zigbee2mqtt)[0m
+[90mCategory: smart-home[0m
+[90m  Starting containers...[0m
+[31m✗ FAILED: Zigbee2MQTT - Failed to start: Pulling zigbee2mqtt (koenkk/zigbee2mqtt:latest)...
+Creating hamnen_zigbee2mqtt ... 
+Creating hamnen_zigbee2mqtt ... error
+
+ERROR: for hamnen_zigbee2mqtt  Cannot start service zigbee2mqtt: error gathering device information while adding custom device "/dev/ttyACM0": no such file or directory
+
+ERROR: for zigbee2mqtt  Cannot start service zigbee2mqtt: error gathering device information while adding custom device "/dev/ttyACM0": no such file or directory
+Encountered errors while bringing up the project.
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[36m
+Testing: OpenVPN (vpn/openvpn)[0m
+[90mCategory: vpn[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[31m  ✗ No containers running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1194
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: OpenVPN - No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1194
+[0m
+[36m
+Testing: Tailscale (vpn/tailscale)[0m
+[90mCategory: vpn[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_tailscale: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:41641
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Tailscale - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:41641
+[0m
+[36m
+Testing: WireGuard (vpn/wireguard)[0m
+[90mCategory: vpn[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_wireguard: running[0m
+[31m  ✗ Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:51820
+[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: WireGuard - Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:51820
+[0m
+[36m
+Testing: Apache (web/apache)[0m
+[90mCategory: web[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_apache: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Apache[0m
+[36m
+Testing: Nginx Demo (web/nginx-demo)[0m
+[90mCategory: web[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_nginx_demo: running[0m
+[31m  ✗ Health check failed: 403[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[31m✗ FAILED: Nginx Demo - Health check failed: 403[0m
+[36m
+Testing: Swag (web/swag)[0m
+[90mCategory: web[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_swag: running[0m
+[32m  ✓ Health check passed (HTTP 301)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: Swag[0m
+[36m
+Testing: WhoAmI (web/whoami)[0m
+[90mCategory: web[0m
+[90m  Starting containers...[0m
+[32m  ✓ Started successfully[0m
+[90m  Waiting 60 seconds for application to fully start...[0m
+[32m  ✓ Containers running: 1[0m
+[90m    - hamnen_whoami: running[0m
+[32m  ✓ Health check passed (HTTP 200)[0m
+[90m  Stopping and cleaning up containers...[0m
+[32m  ✓ Stopped and cleaned up[0m
+[32m✓ PASSED: WhoAmI[0m
+[34m
+═══════════════════════════════════════════════════════════[0m
+[34m   Test Summary[0m
+[34m═══════════════════════════════════════════════════════════
+[0m
+[36mTotal tests:    113[0m
+[32mPassed:         62[0m
+[31mFailed:         51[0m
+[90mSkipped:        0[0m
+[90mDuration:       9076 seconds
+[0m
+[31mFailed Applications:[0m
+[31m  - Stable Diffusion WebUI (ai/stable-diffusion-webui): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:7860
+[0m
+[31m  - n8n (automation/n8n): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:5678
+[0m
+[31m  - Node-RED (automation/nodered): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1880
+[0m
+[31m  - Duplicati (backup/duplicati): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8200
+[0m
+[31m  - Restic (backup/restic): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8119
+[0m
+[31m  - Dashy (dashboard/dashy): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:4000
+[0m
+[31m  - Homepage (dashboard/homepage): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3003
+[0m
+[31m  - Elasticsearch (database/elasticsearch): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9200
+[0m
+[31m  - MariaDB (database/mariadb): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3307
+[0m
+[31m  - MongoDB (database/mongodb): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:27017
+[0m
+[31m  - MySQL (database/mysql): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3306
+[0m
+[31m  - PostgreSQL (database/postgresql): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:5432
+[0m
+[31m  - Redis (database/redis): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:6379
+[0m
+[31m  - Complete CI/CD Environment (development/cicd-complete): Failed to start: Creating hamnen_cicd_postgresql ... 
+Creating hamnen_cicd_nexus      ... 
+Creating hamnen_cicd_harbor_portal ... 
+Creating hamnen_cicd_selenium_hub  ... 
+Creating hamnen_cicd_jenkins       ... 
+Creating hamnen_cicd_redis         ... 
+Creating hamnen_cicd_harbor_registry ... 
+Creating hamnen_cicd_nexus           ... error
+
+ERROR: for hamnen_cicd_nexus  Cannot create container for service nexus: Conflict. The container name "/hamnen_cicd_nexus" is already in use by container "7a8671cb3e7d67dc57f468133e4438b2b175f95476f437acf0dd9dde230b4fbe". You have to remove (or rename) that container to be able to reuse that name.
+Creating hamnen_cicd_harbor_portal   ... error
+Creating hamnen_cicd_harbor_registry ... error
+
+ERROR: for hamnen_cicd_harbor_portal  Cannot create container for service harbor-portal: Conflict. The container name "/hamnen_cicd_harbor_portal" is already in use by container "094f8461c1c6f2e0d0f3002543c68134e8f6144a9927d317837efbc431925128". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for hamnen_cicd_harbor_registry  Cannot create container for service harbor-registry: Conflict. The container name "/hamnen_cicd_harbor_registry" is already in use by container "1c86e51738086b42207dc0eb3019f326f2d148294551158f94d9dfd62798dcd0". You have to remove (or rename) that container to be able to reuse that name.
+Creating hamnen_cicd_postgresql      ... done
+Creating hamnen_cicd_jenkins         ... done
+Creating hamnen_cicd_redis           ... done
+Creating hamnen_cicd_selenium_hub    ... done
+Creating hamnen_cicd_selenium_chrome ... 
+Creating hamnen_cicd_selenium_firefox ... 
+Creating hamnen_cicd_selenium_chrome  ... done
+Creating hamnen_cicd_selenium_firefox ... done
+Creating hamnen_cicd_sonarqube        ... 
+Creating hamnen_cicd_harbor_core      ... 
+Creating hamnen_cicd_harbor_core      ... error
+
+ERROR: for hamnen_cicd_harbor_core  Cannot create container for service harbor-core: Conflict. The container name "/hamnen_cicd_harbor_core" is already in use by container "f6511bebd86b3e4647b81f6296798961c855402faf5a4d9fce93dbd78efacdad". You have to remove (or rename) that container to be able to reuse that name.
+Creating hamnen_cicd_gitlab           ... 
+Creating hamnen_cicd_sonarqube        ... done
+Creating hamnen_cicd_gitlab           ... done
+Creating hamnen_cicd_gitlab_runner    ... 
+Creating hamnen_cicd_gitlab_runner    ... done
+
+ERROR: for nexus  Cannot create container for service nexus: Conflict. The container name "/hamnen_cicd_nexus" is already in use by container "7a8671cb3e7d67dc57f468133e4438b2b175f95476f437acf0dd9dde230b4fbe". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for harbor-portal  Cannot create container for service harbor-portal: Conflict. The container name "/hamnen_cicd_harbor_portal" is already in use by container "094f8461c1c6f2e0d0f3002543c68134e8f6144a9927d317837efbc431925128". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for harbor-registry  Cannot create container for service harbor-registry: Conflict. The container name "/hamnen_cicd_harbor_registry" is already in use by container "1c86e51738086b42207dc0eb3019f326f2d148294551158f94d9dfd62798dcd0". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for harbor-core  Cannot create container for service harbor-core: Conflict. The container name "/hamnen_cicd_harbor_core" is already in use by container "f6511bebd86b3e4647b81f6296798961c855402faf5a4d9fce93dbd78efacdad". You have to remove (or rename) that container to be able to reuse that name.
+Encountered errors while bringing up the project.
+[0m
+[31m  - GitLab (development/gitlab): Failed to start: Recreating hamnen_gitlab ... 
+[141482] Failed to execute script docker-compose
+
+ERROR: for hamnen_gitlab  'ContainerConfig'
+
+ERROR: for gitlab  'ContainerConfig'
+Traceback (most recent call last):
+  File "docker-compose", line 3, in <module>
+  File "compose/cli/main.py", line 81, in main
+  File "compose/cli/main.py", line 203, in perform_command
+  File "compose/metrics/decorator.py", line 18, in wrapper
+  File "compose/cli/main.py", line 1186, in up
+  File "compose/cli/main.py", line 1182, in up
+  File "compose/project.py", line 702, in up
+  File "compose/parallel.py", line 108, in parallel_execute
+  File "compose/parallel.py", line 206, in producer
+  File "compose/project.py", line 688, in do
+  File "compose/service.py", line 581, in execute_convergence_plan
+  File "compose/service.py", line 503, in _execute_convergence_recreate
+  File "compose/parallel.py", line 108, in parallel_execute
+  File "compose/parallel.py", line 206, in producer
+  File "compose/service.py", line 496, in recreate
+  File "compose/service.py", line 615, in recreate_container
+  File "compose/service.py", line 334, in create_container
+  File "compose/service.py", line 922, in _get_container_create_options
+  File "compose/service.py", line 962, in _build_container_volume_options
+  File "compose/service.py", line 1549, in merge_volume_bindings
+  File "compose/service.py", line 1579, in get_container_data_volumes
+KeyError: 'ContainerConfig'
+[0m
+[31m  - Harbor (development/harbor): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8090
+[0m
+[31m  - Jenkins (development/jenkins): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8121
+[0m
+[31m  - Nexus Repository (development/nexus): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8081
+[0m
+[31m  - Ansible Semaphore (development/semaphore): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3006
+[0m
+[31m  - SonarQube (development/sonarqube): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9002
+[0m
+[31m  - Diun (docker/diun): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8081/health
+[0m
+[31m  - Watchtower (docker/watchtower): Health check failed: 401[0m
+[31m  - NZBGet (download/nzbget): Health check failed: 401[0m
+[31m  - qBittorrent (download/qbittorrent): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8080
+[0m
+[31m  - FileRun (files/filerun): Failed to start: Pulling filerun (filerun/filerun:latest)...
+manifest for filerun/filerun:latest not found: manifest unknown: manifest unknown
+[0m
+[31m  - Seafile (files/seafile): Health check failed: 502[0m
+[31m  - Airsonic (media/airsonic): Health check failed: 401[0m
+[31m  - Readarr (media/readarr): Failed to start: Pulling readarr (lscr.io/linuxserver/readarr:develop)...
+no matching manifest for linux/amd64 in the manifest list entries
+[0m
+[31m  - Loki (monitoring/loki): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3100/ready
+[0m
+[31m  - Prometheus (monitoring/prometheus): Failed to start: Pulling prometheus (prom/prometheus:latest)...
+Creating hamnen_prometheus ... 
+Creating hamnen_prometheus ... error
+
+ERROR: for hamnen_prometheus  Cannot start service prometheus: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/monitoring/prometheus/volumes/prometheus.yml" to rootfs at "/etc/prometheus/prometheus.yml": create mountpoint for /etc/prometheus/prometheus.yml mount: cannot create subdirectories in "/var/lib/docker/overlay2/5890632aa41a05231a48beec9d15162d4ead786b3f20b96444129485af712dc2/merged/etc/prometheus/prometheus.yml": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+ERROR: for prometheus  Cannot start service prometheus: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/monitoring/prometheus/volumes/prometheus.yml" to rootfs at "/etc/prometheus/prometheus.yml": create mountpoint for /etc/prometheus/prometheus.yml mount: cannot create subdirectories in "/var/lib/docker/overlay2/5890632aa41a05231a48beec9d15162d4ead786b3f20b96444129485af712dc2/merged/etc/prometheus/prometheus.yml": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+Encountered errors while bringing up the project.
+[0m
+[31m  - Scrutiny (monitoring/scrutiny): Failed to start: Pulling scrutiny (ghcr.io/analogj/scrutiny:master-omnibus)...
+Creating hamnen_scrutiny ... 
+Creating hamnen_scrutiny ... error
+
+ERROR: for hamnen_scrutiny  Cannot start service scrutiny: error gathering device information while adding custom device "/dev/sda": no such file or directory
+
+ERROR: for scrutiny  Cannot start service scrutiny: error gathering device information while adding custom device "/dev/sda": no such file or directory
+Encountered errors while bringing up the project.
+[0m
+[31m  - Speedtest Tracker (monitoring/speedtest-tracker): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8110
+[0m
+[31m  - AdGuard Home (network/adguardhome): Failed to start: Pulling adguardhome (adguard/adguardhome:latest)...
+Creating hamnen_adguardhome ... 
+Host is already in use by another container
+Creating hamnen_adguardhome ... error
+
+ERROR: for hamnen_adguardhome  Cannot start service adguardhome: driver failed programming external connectivity on endpoint hamnen_adguardhome (b8f62d5aac47c367e3e0fdc3a9363df84ddd2ddff5f4362a4365ec92171562f3): Bind for 0.0.0.0:3000 failed: port is already allocated
+
+ERROR: for adguardhome  Cannot start service adguardhome: driver failed programming external connectivity on endpoint hamnen_adguardhome (b8f62d5aac47c367e3e0fdc3a9363df84ddd2ddff5f4362a4365ec92171562f3): Bind for 0.0.0.0:3000 failed: port is already allocated
+Encountered errors while bringing up the project.
+[0m
+[31m  - Caddy (network/caddy): Failed to start: Pulling caddy (caddy:latest)...
+Creating hamnen_caddy ... 
+Creating hamnen_caddy ... error
+
+ERROR: for hamnen_caddy  Cannot start service caddy: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/network/caddy/volumes/Caddyfile" to rootfs at "/etc/caddy/Caddyfile": create mountpoint for /etc/caddy/Caddyfile mount: cannot create subdirectories in "/var/lib/docker/overlay2/392522c858f1587ff5efb7d7edc0d7ece427ed41bda5b594a90f60af0dc23e5e/merged/etc/caddy/Caddyfile": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+ERROR: for caddy  Cannot start service caddy: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/home/johan/AI/hamnen/apps/network/caddy/volumes/Caddyfile" to rootfs at "/etc/caddy/Caddyfile": create mountpoint for /etc/caddy/Caddyfile mount: cannot create subdirectories in "/var/lib/docker/overlay2/392522c858f1587ff5efb7d7edc0d7ece427ed41bda5b594a90f60af0dc23e5e/merged/etc/caddy/Caddyfile": not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+Encountered errors while bringing up the project.
+[0m
+[31m  - Cloudflare Tunnel (network/cloudflared): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8106
+[0m
+[31m  - HAProxy (network/haproxy): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8404/stats
+[0m
+[31m  - Pi-hole (network/pihole): Failed to start: Pulling pihole (pihole/pihole:latest)...
+Creating hamnen_pihole ... 
+Host is already in use by another container
+Creating hamnen_pihole ... error
+
+ERROR: for hamnen_pihole  Cannot start service pihole: driver failed programming external connectivity on endpoint hamnen_pihole (ab3225448893ae32981fad61e3c6cc5bcd0f28f19fd857bce9750b2b17039e57): failed to bind port 0.0.0.0:53/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:53: bind: address already in use
+
+ERROR: for pihole  Cannot start service pihole: driver failed programming external connectivity on endpoint hamnen_pihole (ab3225448893ae32981fad61e3c6cc5bcd0f28f19fd857bce9750b2b17039e57): failed to bind port 0.0.0.0:53/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:53: bind: address already in use
+Encountered errors while bringing up the project.
+[0m
+[31m  - Immich (photos/immich): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:2283
+[0m
+[31m  - Bookstack (productivity/bookstack): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8124
+[0m
+[31m  - Joplin Server (productivity/joplin-server): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:22300
+[0m
+[31m  - Mattermost (productivity/mattermost): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8065/api/v4/system/ping
+[0m
+[31m  - Outline (productivity/outline): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:3007
+[0m
+[31m  - Paperless-ngx (productivity/paperless-ngx): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:8127
+[0m
+[31m  - Rocket.Chat (productivity/rocketchat): Failed to start: Creating network "hamnen_rocketchat_network" with the default driver
+Pulling mongodb (mongo:5.0)...
+Pulling rocketchat (registry.rocket.chat/rocketchat/rocket.chat:latest)...
+Creating hamnen_rocketchat_db ... 
+Creating hamnen_rocketchat_db ... done
+Creating hamnen_rocketchat    ... 
+Creating hamnen_rocketchat_mongo_init ... 
+Host is already in use by another container
+Creating hamnen_rocketchat            ... error
+
+ERROR: for hamnen_rocketchat  Cannot start service rocketchat: driver failed programming external connectivity on endpoint hamnen_rocketchat (1cbdb5612e22fee8cdceea36028c2ee1a2ec08d78aa3535df1bc493e0cb2a773): Bind for 0.0.0.0:3000 failed: port is already allocated
+Creating hamnen_rocketchat_mongo_init ... done
+
+ERROR: for rocketchat  Cannot start service rocketchat: driver failed programming external connectivity on endpoint hamnen_rocketchat (1cbdb5612e22fee8cdceea36028c2ee1a2ec08d78aa3535df1bc493e0cb2a773): Bind for 0.0.0.0:3000 failed: port is already allocated
+Encountered errors while bringing up the project.
+[0m
+[31m  - Authelia (security/authelia): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:9092
+[0m
+[31m  - Mosquitto (smart-home/mosquitto): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1883
+[0m
+[31m  - Zigbee2MQTT (smart-home/zigbee2mqtt): Failed to start: Pulling zigbee2mqtt (koenkk/zigbee2mqtt:latest)...
+Creating hamnen_zigbee2mqtt ... 
+Creating hamnen_zigbee2mqtt ... error
+
+ERROR: for hamnen_zigbee2mqtt  Cannot start service zigbee2mqtt: error gathering device information while adding custom device "/dev/ttyACM0": no such file or directory
+
+ERROR: for zigbee2mqtt  Cannot start service zigbee2mqtt: error gathering device information while adding custom device "/dev/ttyACM0": no such file or directory
+Encountered errors while bringing up the project.
+[0m
+[31m  - OpenVPN (vpn/openvpn): No containers running, Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:1194
+[0m
+[31m  - Tailscale (vpn/tailscale): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:41641
+[0m
+[31m  - WireGuard (vpn/wireguard): Health check failed: Command failed: curl -s -o /dev/null -w "%{http_code}" http://localhost:51820
+[0m
+[31m  - Nginx Demo (web/nginx-demo): Health check failed: 403[0m
+[0m[0m

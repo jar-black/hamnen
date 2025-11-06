@@ -1,0 +1,9 @@
+{
+  "name": "Factory AI",
+  "description": "Agent-Native Software Development platform with AI-powered development agents (Droids) for end-to-end feature development, refactoring, and automated coding tasks",
+  "icon": "🏭",
+  "port": 8080,
+  "path": "/",
+  "healthCheck": "http://localhost:8080/health",
+  "tags": ["ai", "development", "agents", "automation", "cli"]
+}

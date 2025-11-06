@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory AI - Agent-Native Software Development</title>
+    <link rel="stylesheet" href="https://unpkg.com/xterm@4.19.0/css/xterm.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #161b22;
+            padding: 1rem;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2ea043;
+        }
+
+        .btn.secondary {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+        }
+
+        .btn.secondary:hover {
+            background-color: #30363d;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #0d1117;
+            border-right: 1px solid #30363d;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #f0f6fc;
+            font-size: 16px;
+        }
+
+        .file-browser {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 10px;
+            height: 40vh;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            font-size: 14px;
+        }
+
+        .file-item:hover {
+            background-color: #21262d;
+        }
+
+        .file-icon {
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .info-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+        }
+
+        .info-section h4 {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .info-section p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .terminal-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #0d1117;
+        }
+
+        .terminal-header {
+            background-color: #161b22;
+            padding: 10px 15px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .terminal-title {
+            font-weight: 600;
+            color: #f0f6fc;
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        #terminal {
+            flex: 1;
+            padding: 15px;
+        }
+
+        .status {
+            padding: 8px 15px;
+            background-color: #161b22;
+            border-top: 1px solid #30363d;
+            font-size: 14px;
+            color: #7d8590;
+        }
+
+        .status.connected {
+            color: #3fb950;
+        }
+
+        .status.disconnected {
+            color: #f85149;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7d8590;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            🏭 Factory AI
+        </h1>
+        <div class="controls">
+            <button class="btn secondary" onclick="refreshFiles()">Refresh Files</button>
+            <button class="btn" onclick="startDroid()">Start Droid</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <h3>📁 Project Files</h3>
+            <div class="file-browser" id="file-browser">
+                <div class="loading">Loading project files...</div>
+            </div>
+
+            <div class="info-section">
+                <h4>🤖 About Factory AI</h4>
+                <p>Factory AI provides agent-native software development with AI-powered Droids that handle:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>End-to-end feature development</li>
+                    <li>Code refactoring</li>
+                    <li>Incident response</li>
+                    <li>Automated testing</li>
+                    <li>Migration tasks</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h4>🚀 Quick Start</h4>
+                <p><strong>1.</strong> Click "Start Droid" to begin</p>
+                <p><strong>2.</strong> Type commands in the terminal</p>
+                <p><strong>3.</strong> Use <code>droid</code> command for AI assistance</p>
+                <p><strong>4.</strong> Browse project files in the sidebar</p>
+            </div>
+        </div>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-title">Factory AI Terminal</div>
+                <div class="terminal-controls">
+                    <button class="btn secondary" onclick="clearTerminal()">Clear</button>
+                    <button class="btn secondary" onclick="createTerminal()">New Session</button>
+                </div>
+            </div>
+            <div id="terminal"></div>
+            <div class="status" id="status">Connecting...</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/xterm@4.19.0/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-fit@0.5.0/lib/xterm-addon-fit.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Initialize terminal
+        const term = new Terminal({
+            theme: {
+                background: '#0d1117',
+                foreground: '#c9d1d9',
+                cursor: '#58a6ff',
+                selection: '#30363d',
+                black: '#484f58',
+                red: '#ff7b72',
+                green: '#3fb950',
+                yellow: '#d29922',
+                blue: '#58a6ff',
+                magenta: '#bc8cff',
+                cyan: '#39c5cf',
+                white: '#b1bac4'
+            },
+            fontSize: 14,
+            fontFamily: 'Consolas, Monaco, "Courier New", monospace',
+            cursorBlink: true,
+            scrollback: 1000
+        });
+
+        const fitAddon = new FitAddon.FitAddon();
+        term.loadAddon(fitAddon);
+        term.open(document.getElementById('terminal'));
+        fitAddon.fit();
+
+        // Socket connection
+        const socket = io();
+        let terminalCreated = false;
+
+        socket.on('connect', () => {
+            document.getElementById('status').textContent = 'Connected';
+            document.getElementById('status').className = 'status connected';
+            if (!terminalCreated) {
+                createTerminal();
+            }
+        });
+
+        socket.on('disconnect', () => {
+            document.getElementById('status').textContent = 'Disconnected';
+            document.getElementById('status').className = 'status disconnected';
+        });
+
+        socket.on('terminal-created', () => {
+            terminalCreated = true;
+            term.write('\r\n🏭 Factory AI Terminal Ready\r\n');
+            term.write('Type "droid" to start the AI agent or use any standard terminal commands.\r\n\r\n');
+        });
+
+        socket.on('terminal-data', (data) => {
+            term.write(data);
+        });
+
+        socket.on('terminal-exit', () => {
+            term.write('\r\n\r\n[Terminal session ended]\r\n');
+            terminalCreated = false;
+        });
+
+        // Terminal input
+        term.onData((data) => {
+            socket.emit('terminal-input', data);
+        });
+
+        // Functions
+        function createTerminal() {
+            socket.emit('create-terminal');
+        }
+
+        function startDroid() {
+            socket.emit('start-droid');
+        }
+
+        function clearTerminal() {
+            term.clear();
+        }
+
+        function refreshFiles() {
+            loadProjectFiles();
+        }
+
+        // Load project files
+        function loadProjectFiles() {
+            fetch('/api/files')
+                .then(response => response.json())
+                .then(files => {
+                    const fileBrowser = document.getElementById('file-browser');
+                    fileBrowser.innerHTML = '';
+
+                    if (files.error) {
+                        fileBrowser.innerHTML = `<div class="loading">Error: ${files.error}</div>`;
+                        return;
+                    }
+
+                    files.forEach(file => {
+                        const fileItem = document.createElement('div');
+                        fileItem.className = 'file-item';
+                        fileItem.innerHTML = `
+                            <span class="file-icon">${file.type === 'directory' ? '📁' : '📄'}</span>
+                            <span>${file.name}</span>
+                        `;
+                        fileItem.onclick = () => {
+                            if (file.type === 'file') {
+                                openFile(file.path);
+                            }
+                        };
+                        fileBrowser.appendChild(fileItem);
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('file-browser').innerHTML = `<div class="loading">Error loading files: ${error.message}</div>`;
+                });
+        }
+
+        function openFile(filePath) {
+            fetch(`/api/file-content?path=${encodeURIComponent(filePath)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        term.write(`\r\n[Error reading file: ${data.error}]\r\n`);
+                        return;
+                    }
+                    term.write(`\r\n[Content of ${filePath}]\r\n`);
+                    term.write(data.content);
+                    term.write('\r\n[End of file]\r\n');
+                })
+                .catch(error => {
+                    term.write(`\r\n[Error: ${error.message}]\r\n`);
+                });
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            fitAddon.fit();
+        });
+
+        // Load files on startup
+        loadProjectFiles();
+    </script>
+</body>
+</html>

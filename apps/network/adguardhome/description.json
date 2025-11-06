@@ -2,8 +2,8 @@
   "name": "AdGuard Home",
   "description": "Network-wide software for blocking ads & tracking",
   "icon": "🛡️",
-  "port": 3000,
+  "port": 3001,
   "path": "/",
-  "healthCheck": "http://localhost:3000",
+  "healthCheck": "http://localhost:3001",
   "tags": ["dns", "adblock", "network", "privacy"]
 }

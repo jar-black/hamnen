@@ -6,9 +6,9 @@ services:
     container_name: hamnen_pihole
     restart: unless-stopped
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "8104:80"
+      - "5355:53/tcp"  # DNS TCP (alternative port, different from AdGuard)
+      - "5355:53/udp"  # DNS UDP (alternative port, different from AdGuard)
+      - "8104:80"      # Web interface (unchanged)
     volumes:
       - ./volumes/etc-pihole:/etc/pihole
       - ./volumes/etc-dnsmasq.d:/etc/dnsmasq.d

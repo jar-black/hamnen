@@ -1,9 +1,9 @@
 {
-  "name": "Readarr",
-  "description": "Book and audiobook collection manager for Usenet and BitTorrent users",
-  "icon": "📚",
+  "name": "Readarr (DEPRECATED)",
+  "description": "DEPRECATED: Project has been retired by upstream developers. Book and audiobook collection manager for Usenet and BitTorrent users - no longer maintained.",
+  "icon": "⚠️",
   "port": 8787,
   "path": "/",
   "healthCheck": "http://localhost:8787",
-  "tags": ["media", "automation", "books", "audiobooks"]
+  "tags": ["deprecated", "media", "automation", "books", "audiobooks"]
 }
