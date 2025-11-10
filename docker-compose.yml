@@ -8,7 +8,7 @@ services:
     container_name: hamnen_backend
     restart: unless-stopped
     ports:
-      - "3001:3001"
+      - "50741:3001"
     volumes:
       # Mount Docker socket to allow container management
       - /var/run/docker.sock:/var/run/docker.sock
